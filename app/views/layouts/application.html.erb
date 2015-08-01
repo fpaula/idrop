@@ -35,22 +35,12 @@
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
                   </button>
-                  <a class="navbar-brand" href="#">Start Bootstrap</a>
+                  <div id="logo">
+                    <a href="/">IDROP</a>
+                  </div>
               </div>
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                  <ul class="nav navbar-nav">
-                      <li>
-                          <a href="#">About</a>
-                      </li>
-                      <li>
-                          <a href="#">Services</a>
-                      </li>
-                      <li>
-                          <a href="#">Contact</a>
-                      </li>
-                  </ul>
-
                   <ul class="nav navbar-nav navbar-right">
                     <% if user_signed_in? %>
                       <li>
@@ -79,8 +69,6 @@
 
       <!-- Page Content -->
       <div class="container">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
         <%= yield %>
       </div>
       <!-- /.container -->
