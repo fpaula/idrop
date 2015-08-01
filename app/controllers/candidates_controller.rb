@@ -15,6 +15,8 @@ class CandidatesController < ApplicationController
   # GET /candidates/new
   def new
     @candidate = Candidate.new
+    @categories = Category.all.map{ |c| [c.name, c.id] }
+    @category = @candidate.try(:categories).try(:first).try(:id)
   end
 
   # GET /candidates/1/edit
@@ -28,6 +30,12 @@ class CandidatesController < ApplicationController
 
     respond_to do |format|
       if @candidate.save
+        if category = Category.find(params['category']['category_id'])
+          @candidate.categories << category
+        else
+          @candidate.categories.delete_all
+        end
+
         format.html { redirect_to @candidate, notice: 'Candidate was successfully created.' }
         format.json { render :show, status: :created, location: @candidate }
       else
@@ -42,6 +50,12 @@ class CandidatesController < ApplicationController
   def update
     respond_to do |format|
       if @candidate.update(candidate_params)
+        if category = Category.find(params['category']['category_id'])
+          @candidate.categories << category
+        else
+          @candidate.categories.delete_all
+        end
+
         format.html { redirect_to @candidate, notice: 'Candidate was successfully updated.' }
         format.json { render :show, status: :ok, location: @candidate }
       else
@@ -65,6 +79,7 @@ class CandidatesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_candidate
       @candidate = Candidate.find(params[:id])
+      @categories = Category.all.map{ |c| [c.name, c.id] }
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

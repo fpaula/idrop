@@ -4,7 +4,7 @@ class CreateCandidates < ActiveRecord::Migration
       t.string :name
       t.string :nickname
       t.string :image_url
-      t.boolean :status
+      t.boolean :status, default: true
 
       t.timestamps null: false
     end

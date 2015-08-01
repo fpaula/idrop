@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 20150801143329) do
     t.string   "name",       limit: 255
     t.string   "nickname",   limit: 255
     t.string   "image_url",  limit: 255
-    t.boolean  "status",     limit: 1
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.boolean  "status",     limit: 1,   default: true
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "candidates_categories", force: :cascade do |t|
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20150801143329) do
     t.datetime "updated_at"
   end
 
+  add_index "candidates_categories", ["category_id", "candidate_id"], name: "index_candidates_categories_on_category_id_and_candidate_id", using: :btree
+
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.integer  "parent_id",  limit: 4
@@ -36,8 +38,6 @@ ActiveRecord::Schema.define(version: 20150801143329) do
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
   end
-
-  add_index "candidates_categories", ["category_id", "candidate_id"], name: "index_candidates_categories_on_category_id_and_candidate_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name",                   limit: 255
