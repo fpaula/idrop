@@ -1,0 +1,23 @@
+#election #left, #election #right, #election #center {
+  float: left;
+  margin-right: 20px;
+  width: 300px;
+  height: 420px;
+}
+
+#election #center {
+  width: 100px;
+  font-size: 37px;
+  padding-top: 200px;
+  padding-left: 40px;
+}
+
+#election #bottom {
+  width: 100%;
+  clear: both;
+  text-align: center;
+}
+
+#next-candidates {
+  margin-top: 20px;
+}
