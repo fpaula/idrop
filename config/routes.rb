@@ -60,5 +60,5 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   get '/' => 'home#index'
-  get '/eleicao' => 'elections#show'
+  get '/election' => 'elections#show'
 end
