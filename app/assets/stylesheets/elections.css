@@ -9,6 +9,7 @@
   float: left;
   width: 300px;
   height: 420px;
+  margin-bottom: 50px;
 }
 
 #election #center {
@@ -27,8 +28,20 @@
   text-align: center;
 }
 
+#election #bottom div {
+  font-weight: bold;
+}
+
 #next-candidates {
   margin-top: 20px;
+  border: none;
+  color: #fff;
+  background-color: #333333;
+  height: 40px;
+  font-size: 15px;
+  text-transform: uppercase;
+  padding: 12px;
+  margin-bottom: 5px;
 }
 
 #versus {
@@ -40,6 +53,7 @@
 
 #versus img {
   border-radius: 10px 10px 0 0;
+  cursor: pointer;
 }
 
 #versus .subtitle {

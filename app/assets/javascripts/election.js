@@ -1,5 +1,6 @@
-var Election = function(candidates) {
+var Election = function(electionId, candidates) {
   this.candidates = new Candidates(candidates);
+  this.electionId = electionId;
 
   this.round = 0;
   this.combineCandidates();
@@ -28,6 +29,12 @@ fn._bindEvents = function() {
   var self = this;
   this.nextButton.on('click', function() {
     self.nextCandidates();
+  });
+
+  this.root.find('[data-candidate]').on('click', function() {
+    var candidateId = $(this).data('id');
+    var userId = 1;
+    self._vote(self.electionId, candidateId, userId);
   });
 }
 
@@ -67,4 +74,23 @@ fn._prepareImage = function(image, id) {
     image.attr('src', candidate.image);
     image.fadeIn();
   });
+};
+
+fn._vote = function(election_id, candidate_id, user_id) {
+ var self = this;
+
+ $.post('/votes', {
+    'vote': {
+      'election_id': election_id,
+      'candidate_id': candidate_id,
+      'user_id': user_id
+    }
+  })
+  .done(function(data) {
+    self.nextCandidates();
+  })
+  .fail(function(data) {
+    alert('Não foi possível incluir seu voto, tente novamente');
+    console.log(data);
+  })
 };
