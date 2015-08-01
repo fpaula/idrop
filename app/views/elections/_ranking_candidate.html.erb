@@ -3,11 +3,11 @@
 <% image_url ||= '' %>
 <% votes ||= 1389123 %>
 
-<div class='candidate<%= ' top-one' if position == 1 %>'>
-  <div class='position'><%= position %>º</div>
+<div class='pull-left candidate<%= ' top-one' if position == 1 %>'>
+  <div class='list bold position'><%= position %>º</div>
   <img src='<%= image_url %>' />
-  <div>
-    <span><%= name %></span>
-    <span><%= votes %></span>
+  <div class='info'>
+    <span class='bold'><%= name %></span>
+    <span class='light-gray'><%= number_with_delimiter(votes, delimiter: '.') %></span>
   </div>
 </div>

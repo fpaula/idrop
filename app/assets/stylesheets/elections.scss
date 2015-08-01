@@ -78,15 +78,11 @@
 #ranking .head-left {
   margin-top: 30px;
   font-size: 27px;
-  font-weight: bold;
   width: 100px;
-  float: left;
 }
 
 #ranking .total {
-  float: right;
   font-size: 20px;
-  color: #616161;
   margin-top: 30px;
 }
 
@@ -95,46 +91,78 @@
 }
 
 #top-candidates {
-  margin-top: 100px;
+  margin-top: 70px;
 }
 
 #top-candidates .candidate {
   clear: both;
   width: 100%;
-  float: left;
   height: 150px;
+  margin: 5px;
+}
+
+#top-candidates .candidate .list {
+  font-family: 'arial';
+  line-height: 1;
+  height: 100%;
 }
 
 #top-candidates .candidate.top-one .position {
   font-size: 100px;
-  font-family: 'arial';
-  font-weight: bold;
+  padding-top: 30px;
+  padding-left: 0;
 }
 
 #top-candidates .candidate .position {
   font-size: 50px;
-  font-weight: bold;
-  font-family: 'arial';
-  font-weight: bold;
+  padding-top: 48px;
+  padding-left: 15px;
 }
 
 #top-candidates .candidate.top-one img {
   border-radius: 50%;
   width: 140px;
   height: 140px;
-  margin-top: -50px;
+  margin-top: 5px;
   margin-left: 12px;
 }
 
 #top-candidates .candidate img {
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  margin-left: 12px;
-  margin-top: -40px;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    margin-left: 20px;
+    margin-top: 24px;
 }
 
 #top-candidates div, #top-candidates img {
   float: left;
   margin-right: 5px;
+}
+
+#top-candidates .candidate .info {
+  height: 100%;
+}
+
+#top-candidates .candidate .info span {
+  line-height: 1;
+  display: block;
+}
+
+#top-candidates .candidate.top-one div.info {
+  font-size: 25px;
+  padding: 35px 0 0 20px;
+}
+
+#top-candidates .candidate div.info {
+  font-size: 22px;
+  padding: 50px 0 0 20px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.light-gray {
+  color: #616161;
 }
