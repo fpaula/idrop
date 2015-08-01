@@ -50,6 +50,27 @@
                           <a href="#">Contact</a>
                       </li>
                   </ul>
+
+                  <ul class="nav navbar-nav navbar-right">
+                    <% if user_signed_in? %>
+                      <li>
+                        <a href="javascript:;">
+                          <% if current_user.image %>
+                            <%= image_tag current_user.image, class: 'user-image' %>
+                          <% end %>
+                          <%= current_user.exhibition_name %>
+                        </a>
+                      </li>
+                      <li role="separator" class="divider"></li>
+                      <li>
+                        <%= link_to('Sair', destroy_user_session_path, :method => :delete) %>
+                      </li>
+                    <% else %>
+                      <li>
+                        <%= link_to('Entrar', new_user_session_path) %>
+                      </li>
+                    <% end %>
+                  </ul>
               </div>
               <!-- /.navbar-collapse -->
           </div>
@@ -57,7 +78,11 @@
       </nav>
 
       <!-- Page Content -->
-      <%= yield %>
+      <div class="container">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </div>
       <!-- /.container -->
 
       <div class="container">
