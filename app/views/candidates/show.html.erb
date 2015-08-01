@@ -13,6 +13,11 @@
   </p>
 
   <p>
+    <strong>Category:</strong>
+    <%= @candidate.category.try(:name) %>
+  </p>
+
+  <p>
     <strong>Status:</strong>
     <%= @candidate.status %>
   </p>

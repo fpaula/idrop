@@ -23,6 +23,10 @@
     <%= f.label :status %><br>
     <%= f.check_box :status %>
   </div>
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= select(:category, :category_id, @categories, prompt: "Select category...", selected: @candidate.category.try(:id)) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>
