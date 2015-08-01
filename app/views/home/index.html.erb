@@ -15,8 +15,8 @@
                       </ol>
                       <div class="carousel-inner">
                         <% @carousel.each_with_index do |category, index| %>
-                          <div class="item<%= " active" if index.zero? %>">
-                            <img class="slide-image" style="width:1000px; height:300px;" src="<%= category.try(:candidates).try(:first).try(:image_url) %>" alt=""/>
+                          <div class="item<%= " active" if index.zero? %>" style="text-align: center">
+                            <img class="slide-image" src="<%= category.image_url %>" alt=""/>
                           </div>
                         <% end %>
                       </div>
@@ -35,10 +35,10 @@
             <% @highlights.each do |highlight| %>
               <div class="col-sm-4 col-lg-4 col-md-4">
                   <div class="thumbnail">
-                      <img src="<%= highlight.try(:candidates).try(:first).try(:image_url) %>" alt="">
+                      <img src="<%= highlight.image_url %>" alt="">
                       <div class="caption">
                           <h4 class="pull-right"></h4>
-                          <h4><a href="#"><%= highlight.try(:name) %></a>
+                          <h4><a href="#"><%= highlight.name %></a>
                           </h4>
                           <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
                       </div>

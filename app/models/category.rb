@@ -6,4 +6,8 @@ class Category < ActiveRecord::Base
   def has_parent?
     @has_parent ||= !self.parent.nil?
   end
+
+  def image_url
+    self.try(:candidates).try(:first).try(:image_url)
+  end
 end
