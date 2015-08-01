@@ -1,25 +1,32 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-9">
-      <div id='election'>
-        <div id='left'>
-          <img data-left-candidate />
-        </div>
+<div class="row election-header">
+  <div class="col-md-12">
+    <h2 class="text-center">ATOR COREANO</h2>
+  </div>
+</div>
 
-        <div id='center'>
-          X
-        </div>
 
-        <div id='right'>
-          <img data-right-candidate />
-        </div>
+<div class="row">
+  <div class="col-md-1"></div>
+  <div class="col-md-10" id='election'>
+    <section id="versus">
+      <div id='left'>
+        <img data-left-candidate />
+        <div class="subtitle">Gong Yoo</div>
+      </div>
 
-        <div id='bottom'>
-          <button data-next-candidates id='next-candidates'>Próxima batalha</button>
-        </div>
+      <div id='center'> X </div>
+
+      <div id='right'>
+        <img data-right-candidate />
+        <div class="subtitle">Lee Dong-hae</div>
+      </div>
+
+      <div id='bottom'>
+        <button data-next-candidates id='next-candidates'>Próxima batalha</button>
       </div>
     </div>
-  </div>
+  </section>
+  <div class="col-md-1"></div>
 </div>
 
 <% content_for :javascripts do %>
