@@ -20,7 +20,7 @@
           <td><%= candidate.name %></td>
           <td><%= candidate.status %></td>
           <td><%= candidate.category.try(:name) %></
-          <td><%= candidate.image_url %></td>
+          <td><%= image_tag(candidate.image_url, width: '150px', height: '200px') %></td>
           <td><%= link_to 'Show', candidate %></td>
           <td><%= link_to 'Edit', edit_candidate_path(candidate) %></td>
           <td><%= link_to 'Destroy', candidate, method: :delete, data: { confirm: 'Are you sure?' } %></td>
