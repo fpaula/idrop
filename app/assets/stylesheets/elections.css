@@ -28,14 +28,20 @@
   text-align: center;
 }
 
+#election #bottom div {
+  font-weight: bold;
+}
+
 #next-candidates {
   margin-top: 20px;
   border: none;
   color: #fff;
   background-color: #333333;
-  height: 45px;
-  font-size: 17px;
+  height: 40px;
+  font-size: 15px;
   text-transform: uppercase;
+  padding: 12px;
+  margin-bottom: 5px;
 }
 
 #versus {
