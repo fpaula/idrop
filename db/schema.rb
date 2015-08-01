@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801001807) do
+ActiveRecord::Schema.define(version: 20150801143329) do
+
+  create_table "candidates", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "nickname",   limit: 255
+    t.string   "image_url",  limit: 255
+    t.boolean  "status",     limit: 1
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  create_table "candidates_categories", force: :cascade do |t|
+    t.integer  "category_id",  limit: 4
+    t.integer  "candidate_id", limit: 4
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "candidates_categories", ["category_id", "candidate_id"], name: "index_candidates_categories_on_category_id_and_candidate_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
