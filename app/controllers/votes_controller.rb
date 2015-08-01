@@ -18,6 +18,8 @@ class VotesController < ApplicationController
       if vote_summary
         vote_summary.increment!
         vote_summary.save
+      else
+        VoteSummary.create(election_id: election.id, candidate_id: candidate.id, total_votes: 1)
       end
       render json: { success: true }
     else
