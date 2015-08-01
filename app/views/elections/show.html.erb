@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="row">
+
+
+    <div class="col-md-9">
+      <div id='election'>
+        <div id='left'>
+          <img data-left-candidate />
+        </div>
+
+        <div id='center'>
+          X
+        </div>
+
+        <div id='right'>
+          <img data-right-candidate />
+        </div>
+
+        <div id='bottom'>
+          <button data-next-candidates id='next-candidates'>Próxima batalha</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<% content_for :javascripts do %>
+  <script>
+    $(document).ready(function() {
+      var candidates = [
+        { id: 1, image: 'http://imguol.com/c/esporte/df/2015/07/08/ingrid-oliveira-saltadora-representa-o-brasil-nos-jogos-panamericanos-1436325348163_300x420.png' },
+        { id: 2, image: 'http://imguol.com/c/esporte/2013/11/13/13nov2013---adenizia-foi-eleita-a-melhor-jogadora-da-partida-entre-brasil-e-tailandia-1384331577435_300x420.jpg' },
+        { id: 3, image: 'http://imguol.com/c/esporte/19/2015/07/13/mirella-coutinho-1436820796618_300x420.jpg' },
+        { id: 4, image: 'http://imguol.com/c/esporte/f9/2015/07/13/priscila-carnaval---bmx-1436821002765_300x420.jpg' },
+      ];
+
+      new Election(candidates).start();
+    });
+  </script>
+<% end %>
