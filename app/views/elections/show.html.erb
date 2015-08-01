@@ -1,33 +1,53 @@
-<div class="row election-header">
-  <div class="col-md-12">
-    <h2 class="text-center">ATOR COREANO</h2>
+<div class="container">
+  <div class='row election-header'>
+    <div class='col-md-12'>
+      <h2 class='text-center'>ATOR COREANO</h2>
+    </div>
+  </div>
+
+  <div class='row' id='election'>
+    <div class='col-md-1'></div>
+    <div class='col-md-10'>
+      <section id='versus'>
+        <div id='left'>
+          <img data-left-candidate data-candidate data-id='2' />
+          <div class='subtitle'>Gong Yoo</div>
+        </div>
+
+        <div id='center'> X </div>
+
+        <div id='right'>
+          <img data-right-candidate data-candidate data-id='1' />
+          <div class='subtitle'>Lee Dong-hae</div>
+        </div>
+
+        <div id='bottom'>
+          <button data-next-candidates id='next-candidates'>Pular esse duelo</button>
+          <div>Você votou em 2 duelos</div>
+        </div>
+      </div>
+    </section>
+    <div class='col-md-1'></div>
   </div>
 </div>
 
+<div class='row'>
+  <section id='ranking'>
+    <div class='col-md-2'></div>
+    <div class='col-md-8'>
+      <div class='head-left'>Classificação</div>
+      <div class='total'>Total de votos: <span>3.934.890</span></div>
 
-<div class="row">
-  <div class="col-md-1"></div>
-  <div class="col-md-10" id='election'>
-    <section id="versus">
-      <div id='left'>
-        <img data-left-candidate data-candidate data-id='2' />
-        <div class="subtitle">Gong Yoo</div>
-      </div>
+      <div id='top-candidates'>
 
-      <div id='center'> X </div>
+        <%= render partial: 'ranking_candidate', locals: { position: 1, name: 'Daniel Henney', image_url: 'http://imguol.com/c/esporte/df/2015/07/08/ingrid-oliveira-saltadora-representa-o-brasil-nos-jogos-panamericanos-1436325348163_300x420.png' }  %>
 
-      <div id='right'>
-        <img data-right-candidate data-candidate data-id='1' />
-        <div class="subtitle">Lee Dong-hae</div>
-      </div>
-
-      <div id='bottom'>
-        <button data-next-candidates id='next-candidates'>Pular esse duelo</button>
-        <div>Você votou em 2 duelos</div>
+        <%= render partial: 'ranking_candidate', locals: { position: 2, name: 'Lee Ki Woo', image_url: 'http://imguol.com/c/esporte/f9/2015/07/13/priscila-carnaval---bmx-1436821002765_300x420.jpg' }
+         %>
       </div>
     </div>
+    <div class='col-md-2'></div>
   </section>
-  <div class="col-md-1"></div>
 </div>
 
 <% content_for :javascripts do %>

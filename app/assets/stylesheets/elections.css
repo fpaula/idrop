@@ -1,3 +1,7 @@
+#election {
+  margin-bottom: 15px;
+}
+
 #election #left {
   float: left;
   margin-right: 20px;
@@ -63,4 +67,74 @@
   color: #fff;
   font-size: 19px;
   padding-top: 15px;
+}
+
+#ranking {
+  background-color: #d8d8d8;
+  min-height: 500px;
+  color: #333;
+}
+
+#ranking .head-left {
+  margin-top: 30px;
+  font-size: 27px;
+  font-weight: bold;
+  width: 100px;
+  float: left;
+}
+
+#ranking .total {
+  float: right;
+  font-size: 20px;
+  color: #616161;
+  margin-top: 30px;
+}
+
+#ranking .total span {
+  font-weight: bold;
+}
+
+#top-candidates {
+  margin-top: 100px;
+}
+
+#top-candidates .candidate {
+  clear: both;
+  width: 100%;
+  float: left;
+  height: 150px;
+}
+
+#top-candidates .candidate.top-one .position {
+  font-size: 100px;
+  font-family: 'arial';
+  font-weight: bold;
+}
+
+#top-candidates .candidate .position {
+  font-size: 50px;
+  font-weight: bold;
+  font-family: 'arial';
+  font-weight: bold;
+}
+
+#top-candidates .candidate.top-one img {
+  border-radius: 50%;
+  width: 140px;
+  height: 140px;
+  margin-top: -50px;
+  margin-left: 12px;
+}
+
+#top-candidates .candidate img {
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  margin-left: 12px;
+  margin-top: -40px;
+}
+
+#top-candidates div, #top-candidates img {
+  float: left;
+  margin-right: 5px;
 }

@@ -1,0 +1,13 @@
+<% position ||= 1 %>
+<% name ||= '' %>
+<% image_url ||= '' %>
+<% votes ||= 1389123 %>
+
+<div class='candidate<%= ' top-one' if position == 1 %>'>
+  <div class='position'><%= position %>º</div>
+  <img src='<%= image_url %>' />
+  <div>
+    <span><%= name %></span>
+    <span><%= votes %></span>
+  </div>
+</div>
