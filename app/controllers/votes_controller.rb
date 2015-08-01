@@ -15,9 +15,9 @@ class VotesController < ApplicationController
         vote_summary.increment!
         vote_summary.save
       end
-      render json: {success: true}
+      render json: { success: true }
     else
-      render json: {success: false}, status: :bad_request
+      render json: { success: false }, status: :bad_request
     end
   end
 

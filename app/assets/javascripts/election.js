@@ -78,6 +78,7 @@ fn._prepareImage = function(image, id) {
 
 fn._vote = function(election_id, candidate_id, user_id) {
  var self = this;
+
  $.post('/votes', {
     'vote': {
       'election_id': election_id,
@@ -85,7 +86,7 @@ fn._vote = function(election_id, candidate_id, user_id) {
       'user_id': user_id
     }
   })
-  .done(function( data ) {
+  .done(function(data) {
     self.nextCandidates();
   })
   .fail(function(data) {

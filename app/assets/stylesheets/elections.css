@@ -34,6 +34,8 @@
   color: #fff;
   background-color: #333333;
   height: 45px;
+  font-size: 17px;
+  text-transform: uppercase;
 }
 
 #versus {
