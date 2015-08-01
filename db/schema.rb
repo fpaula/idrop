@@ -34,9 +34,10 @@ ActiveRecord::Schema.define(version: 20150801150706) do
   create_table "categories", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.integer  "parent_id",  limit: 4
+    t.string   "language",   limit: 5,   default: "pt-br"
     t.boolean  "status",     limit: 1,   default: true
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   create_table "users", force: :cascade do |t|
