@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801143329) do
+ActiveRecord::Schema.define(version: 20150801150706) do
 
   create_table "candidates", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -63,4 +63,19 @@ ActiveRecord::Schema.define(version: 20150801143329) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["uid"], name: "index_users_on_uid", using: :btree
 
+  create_table "vote_summaries", force: :cascade do |t|
+    t.integer  "election_id",  limit: 4
+    t.integer  "candidate_id", limit: 4
+    t.integer  "total_votes",  limit: 4, default: 0
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "election_id",  limit: 4
+    t.integer  "candidate_id", limit: 4
+    t.integer  "user_id",      limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 end
