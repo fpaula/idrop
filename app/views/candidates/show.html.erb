@@ -7,6 +7,12 @@
     <%= @candidate.name %>
   </p>
 
+  <% if @candidate.image_url %>
+    <p>
+      <img src="<%= @candidate.image_url %>"/>
+    </p>
+  <% end %>
+
   <p>
     <strong>Image url:</strong>
     <%= @candidate.image_url %>
