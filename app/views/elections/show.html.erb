@@ -9,17 +9,11 @@
     <div class='col-md-1'></div>
     <div class='col-md-10'>
       <section id='versus'>
-        <div id='left'>
-          <img data-left-candidate data-candidate data-id='' />
-          <div class='subtitle' data-subtitle></div>
-        </div>
+        <%= render partial: 'candidate_panel', locals: { position: 'left' } %>
 
         <div id='center'> X </div>
 
-        <div id='right'>
-          <img data-right-candidate data-candidate data-id='' />
-          <div class='subtitle' data-subtitle></div>
-        </div>
+        <%= render partial: 'candidate_panel', locals: { position: 'right' } %>
 
         <div id='bottom'>
           <button data-next-candidates id='next-candidates'>Pular esse duelo</button>

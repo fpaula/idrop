@@ -33,7 +33,7 @@ fn._bindEvents = function() {
     self.nextCandidates();
   });
 
-  this.root.find('[data-candidate]').on('click', function() {
+  this.root.find('[data-candidate-picture]').on('click', function() {
     var candidateId = $(this).data('id'),
         userId = 1;
 
@@ -73,8 +73,9 @@ fn.nextCandidates = function() {
 fn._prepareCandidate = function(panel, id) {
   var self = this,
       candidate = this.candidates.find(id),
-      image = panel.find('[data-candidate]'),
-      subtitle = panel.find('[data-subtitle]');
+      image = panel.find('[data-candidate-picture]'),
+      subtitle = panel.find('[data-subtitle]'),
+      mask = panel.find('[data-mask]');
 
   image.fadeOut(function() {
     image.attr('src', candidate.image_url);
@@ -82,6 +83,7 @@ fn._prepareCandidate = function(panel, id) {
     image.data('id', id);
     image.fadeIn(function(){
       self._adjustSubtitleToImage(image, subtitle);
+      self._adjustMaskToImage(image, mask);
     });
   });
 };
@@ -95,7 +97,22 @@ fn._adjustSubtitleToImage = function(image, subtitle) {
   } else {
     subtitle.width(300).css('margin-left', 0);
   }
-}
+};
+
+fn._adjustMaskToImage = function(image, mask) {
+  var imageWidth = image.width(),
+      imageHeight = image.height(),
+      maskRadius = mask.width(),
+      top = 100,
+      left = 100;
+
+  if (imageWidth > 0 && imageHeight > 0) {
+    left = (imageWidth - maskRadius) / 2;
+    top = (imageHeight - maskRadius) / 2;
+  }
+
+  mask.css('top', top).css('left', left);
+};
 
 fn._vote = function(election_id, candidate_id, user_id) {
  var self = this;

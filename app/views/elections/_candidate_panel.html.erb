@@ -1,0 +1,16 @@
+<% position ||= 'left' %>
+<div id='<%= position %>' class='hover-effect'>
+  <div class="ih-item square effect13 left_to_right">
+    <a href="javascript:;">
+      <div class="img">
+        <img data-<%= position %>-candidate data-candidate-picture data-id />
+      </div>
+
+      <div class="info">
+        <div class='circle-vote' data-mask>VOTE</div>
+      </div>
+    </a>
+  </div>
+
+  <div class='subtitle' data-subtitle></div>
+</div>
