@@ -3,6 +3,7 @@ class Category < ActiveRecord::Base
   has_many :children, class_name: "Category", foreign_key: "parent_id"
   has_and_belongs_to_many :candidates
   has_many :elections
+  has_many :vote_summary
 
   def has_parent?
     @has_parent ||= !self.parent.nil?

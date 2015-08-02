@@ -1,6 +1,5 @@
 <% position ||= 1 %>
 <% candidate ||= nil %>
-<% votes ||= 1389123 %>
 
 <% if candidate.present? %>
   <div class='pull-left candidate<%= ' top-one' if position == 1 %>'>
@@ -8,7 +7,10 @@
     <img src='<%= candidate.image_url %>' />
     <div class='info'>
       <span class='bold'><%= candidate.name %></span>
-      <span class='light-gray'><%= number_with_delimiter(votes, delimiter: '.') %></span>
+      <span class='light-gray'>
+        <%= number_with_delimiter(candidate.total_votes, delimiter: '.') %>
+        <%= candidate.total_votes == 1 ? 'voto': ' votos' %>
+      </span>
     </div>
   </div>
 <% end %>

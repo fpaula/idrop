@@ -4,13 +4,8 @@ class VotesController < ApplicationController
   end
 
   def create
-    #TODO: O codigo abaixo ainda não funciona porque depende de models que ainda nao existem
-    #election = Election.find_by_id(params[:vote][:election_id])
-    #candidate = Candidate.find_by_id(params[:vote][:candidate_id])
-
-    #TODO remove these two lines. They are here for testing
-    election = Election.first
-    candidate = Candidate.first
+    election = Election.find_by_id(params[:vote][:election_id])
+    candidate = Candidate.find_by_id(params[:vote][:candidate_id])
 
     if election && candidate
       vote = Vote.create(vote_params)
