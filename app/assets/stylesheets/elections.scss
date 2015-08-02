@@ -58,6 +58,8 @@
 #versus img {
   border-radius: 10px 10px 0 0;
   cursor: pointer;
+  max-width: 300px;
+  max-height: 420px;
 }
 
 #versus .subtitle {
@@ -73,6 +75,8 @@
   background-color: #d8d8d8;
   min-height: 500px;
   color: #333;
+  float: left;
+  width: 100%;
 }
 
 #ranking .head-left {

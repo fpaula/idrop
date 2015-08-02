@@ -4,6 +4,7 @@ class CreateElections < ActiveRecord::Migration
       t.string :description
       t.datetime :start_date
       t.datetime :finish_date
+      t.integer :category_id
       t.string :status
 
       t.timestamps null: false

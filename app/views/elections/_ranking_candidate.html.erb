@@ -1,13 +1,14 @@
 <% position ||= 1 %>
-<% name ||= '' %>
-<% image_url ||= '' %>
+<% candidate ||= nil %>
 <% votes ||= 1389123 %>
 
-<div class='pull-left candidate<%= ' top-one' if position == 1 %>'>
-  <div class='list bold position'><%= position %>º</div>
-  <img src='<%= image_url %>' />
-  <div class='info'>
-    <span class='bold'><%= name %></span>
-    <span class='light-gray'><%= number_with_delimiter(votes, delimiter: '.') %></span>
+<% if candidate.present? %>
+  <div class='pull-left candidate<%= ' top-one' if position == 1 %>'>
+    <div class='list bold position'><%= position %>º</div>
+    <img src='<%= candidate.image_url %>' />
+    <div class='info'>
+      <span class='bold'><%= candidate.name %></span>
+      <span class='light-gray'><%= number_with_delimiter(votes, delimiter: '.') %></span>
+    </div>
   </div>
-</div>
+<% end %>
