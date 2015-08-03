@@ -78,40 +78,11 @@ fn._prepareCandidate = function(panel, id) {
       mask = panel.find('[data-mask]');
 
   image.fadeOut(function() {
-    image.attr('src', candidate.image_url);
+    image.css('background-image', 'url(' + candidate.image_url + ')');
     subtitle.text(candidate.name);
     image.data('id', id);
-    image.fadeIn(function(){
-      self._adjustSubtitleToImage(image, subtitle);
-      self._adjustMaskToImage(image, mask);
-    });
+    image.fadeIn();
   });
-};
-
-fn._adjustSubtitleToImage = function(image, subtitle) {
-  var imageWidth = image.width();
-
-  if (imageWidth > 0) {
-    subtitle.css('margin-left', (300 - imageWidth) / 2);
-    subtitle.width(imageWidth);
-  } else {
-    subtitle.width(300).css('margin-left', 0);
-  }
-};
-
-fn._adjustMaskToImage = function(image, mask) {
-  var imageWidth = image.width(),
-      imageHeight = image.height(),
-      maskRadius = mask.width(),
-      top = 100,
-      left = 100;
-
-  if (imageWidth > 0 && imageHeight > 0) {
-    left = (imageWidth - maskRadius) / 2;
-    top = (imageHeight - maskRadius) / 2;
-  }
-
-  mask.css('top', top).css('left', left);
 };
 
 fn._vote = function(election_id, candidate_id, user_id) {

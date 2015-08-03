@@ -1,39 +1,29 @@
 #election {
   margin-bottom: 15px;
-}
 
-#election #left {
-  float: left;
-  margin-right: 20px;
-  width: 300px;
-  height: 420px;
-}
+  #left {
+    margin-right: 20px;
+  }
 
-#election #right {
-  float: left;
-  width: 300px;
-  height: 420px;
-  margin-bottom: 50px;
-}
+  #center {
+    font-size: 100px;
+    padding-top: 200px;
+    font-weight: bold;
+    float: left;
+    margin-right: 20px;
+    width: 100px;
+    height: 420px;
+  }
 
-#election #center {
-  font-size: 100px;
-  padding-top: 200px;
-  font-weight: bold;
-  float: left;
-  margin-right: 20px;
-  width: 100px;
-  height: 420px;
-}
+  #bottom {
+    width: 100%;
+    clear: both;
+    text-align: center;
 
-#election #bottom {
-  width: 100%;
-  clear: both;
-  text-align: center;
-}
-
-#election #bottom div {
-  font-weight: bold;
+    div {
+      font-weight: bold;
+    }
+  }
 }
 
 #next-candidates {
@@ -53,22 +43,16 @@
   text-align: center;
   width: 740px;
   height: 100%;
-}
 
-#versus img {
-  border-radius: 10px 10px 0 0;
-  cursor: pointer;
-  max-width: 300px;
-  max-height: 420px;
-}
-
-#versus .subtitle {
-  height: 50px;
-  background-color: #616161;
-  border-radius: 0 0 10px 10px;
-  color: #fff;
-  font-size: 19px;
-  padding-top: 15px;
+  .subtitle {
+    background-color: #616161;
+    border-radius: 0 0 10px 10px;
+    color: #fff;
+    font-size: 18px;
+    padding: 15px;
+    width: 300px;
+    line-height: 24px;
+  }
 }
 
 #ranking {
@@ -77,90 +61,90 @@
   color: #333;
   float: left;
   width: 100%;
-}
 
-#ranking .head-left {
-  margin-top: 30px;
-  font-size: 27px;
-  width: 100px;
-}
+  .head-left {
+    margin-top: 30px;
+    font-size: 27px;
+    width: 100px;
+  }
 
-#ranking .total {
-  font-size: 20px;
-  margin-top: 30px;
-}
+  .total {
+    font-size: 20px;
+    margin-top: 30px;
 
-#ranking .total span {
-  font-weight: bold;
+    span {
+      font-weight: bold;
+    }
+  }
 }
 
 #top-candidates {
   margin-top: 70px;
-}
 
-#top-candidates .candidate {
-  clear: both;
-  width: 100%;
-  height: 150px;
-  margin: 5px;
-}
+  .candidate {
+    clear: both;
+    width: 100%;
+    height: 150px;
+    margin: 5px;
 
-#top-candidates .candidate .list {
-  font-family: 'arial';
-  line-height: 1;
-  height: 100%;
-}
+    .list {
+      font-family: 'arial';
+      line-height: 1;
+      height: 100%;
+    }
 
-#top-candidates .candidate.top-one .position {
-  font-size: 100px;
-  padding-top: 30px;
-  padding-left: 0;
-}
+    .position {
+      font-size: 50px;
+      padding-top: 48px;
+      padding-left: 15px;
+    }
 
-#top-candidates .candidate .position {
-  font-size: 50px;
-  padding-top: 48px;
-  padding-left: 15px;
-}
+    .info {
+      height: 100%;
 
-#top-candidates .candidate.top-one img {
-  border-radius: 50%;
-  width: 140px;
-  height: 140px;
-  margin-top: 5px;
-  margin-left: 12px;
-}
+      span {
+        line-height: 1;
+        display: block;
+      }
+    }
 
-#top-candidates .candidate img {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-    margin-left: 20px;
-    margin-top: 24px;
+    div.info {
+      font-size: 22px;
+      padding: 50px 0 0 20px;
+    }
+
+    img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      margin-left: 20px;
+      margin-top: 24px;
+    }
+
+    &.top-one .position {
+      font-size: 100px;
+      padding-top: 30px;
+      padding-left: 0;
+
+      img {
+        border-radius: 50%;
+        width: 140px;
+        height: 140px;
+        margin-top: 5px;
+        margin-left: 12px;
+      }
+    }
+
+    &.top-one div.info {
+      font-size: 25px;
+      padding: 35px 0 0 20px;
+    }
+  }
 }
 
 #top-candidates div, #top-candidates img {
   float: left;
   margin-right: 5px;
-}
-
-#top-candidates .candidate .info {
-  height: 100%;
-}
-
-#top-candidates .candidate .info span {
-  line-height: 1;
-  display: block;
-}
-
-#top-candidates .candidate.top-one div.info {
-  font-size: 25px;
-  padding: 35px 0 0 20px;
-}
-
-#top-candidates .candidate div.info {
-  font-size: 22px;
-  padding: 50px 0 0 20px;
 }
 
 .bold {
@@ -169,4 +153,24 @@
 
 .light-gray {
   color: #616161;
+}
+
+.candidate-panel {
+  border-radius: 10px;
+  float: left;
+
+  .img {
+    width: 300px;
+    height: 420px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center center;
+    background-color: #000;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .circle-vote {
+    top: 150px;
+    left: 90px;
+  }
 }

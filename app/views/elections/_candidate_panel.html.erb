@@ -1,9 +1,9 @@
 <% position ||= 'left' %>
-<div id='<%= position %>' class='hover-effect'>
-  <div class="ih-item square effect13 left_to_right">
+<% effect = position == 'right' ? 'left_to_right' : 'right_to_left' %>
+<div id='<%= position %>' class='hover-effect candidate-panel'>
+  <div class="ih-item square effect13 <%= effect %>">
     <a href="javascript:;">
-      <div class="img">
-        <img data-<%= position %>-candidate data-candidate-picture data-id />
+      <div class="img" data-<%= position %>-candidate data-candidate-picture data-id>
       </div>
 
       <div class="info">
