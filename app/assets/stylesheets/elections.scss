@@ -113,7 +113,9 @@
       padding: 50px 0 0 20px;
     }
 
-    img {
+    .img {
+      background-size: 130%;
+      background-position: center center;
       border-radius: 50%;
       width: 100px;
       height: 100px;

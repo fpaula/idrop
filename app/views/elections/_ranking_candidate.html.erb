@@ -4,7 +4,7 @@
 <% if candidate.present? %>
   <div class='pull-left candidate<%= ' top-one' if position == 1 %>'>
     <div class='list bold position'><%= position %>º</div>
-    <img src='<%= candidate.image_url %>' />
+    <div class='img' style='background-image: url("<%= candidate.image_url %>");'></div>
     <div class='info'>
       <span class='bold'><%= candidate.name %></span>
       <span class='light-gray'>
