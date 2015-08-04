@@ -37,9 +37,9 @@
                       <img src="<%= highlight.image_url %>" alt="">
                       <div class="caption">
                           <h4 class="pull-right"></h4>
-                          <h4><a href="/election/<%= highlight.id %>"><%= highlight.description %></a>
+                          <h4><a href="/election/<%= highlight.id %>"><%= highlight.category.name %></a>
                           </h4>
-                          <p>See more snippets like this online store item at <a target="_blank" href="http://www.bootsnipp.com">Bootsnipp - http://bootsnipp.com</a>.</p>
+                          <p><a href="/election/<%= highlight.id %>"><%= highlight.description %></a>.</p>
                       </div>
                       <div class="ratings">
                           <p class="pull-right">Total de votos: <%= highlight.total_votes %></p>
