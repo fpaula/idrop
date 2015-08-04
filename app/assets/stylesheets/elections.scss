@@ -108,46 +108,50 @@
       }
     }
 
-    div.info {
-      font-size: 22px;
-      padding: 50px 0 0 20px;
-    }
-
     .img {
       background-size: 130%;
       background-position: center center;
       border-radius: 50%;
       width: 100px;
       height: 100px;
-      margin-left: 20px;
+      margin-left: 40px;
       margin-top: 24px;
     }
 
-    &.top-one .position {
-      font-size: 100px;
-      padding-top: 30px;
-      padding-left: 0;
+    div.info {
+      font-size: 22px;
+      padding: 50px 0 0 20px;
+      margin-left: 20px;
+    }
 
-      img {
+    div {
+      float: left;
+    }
+
+    &.top-one {
+      .position {
+        font-size: 100px;
+        padding-top: 30px;
+        padding-left: 0;
+      }
+
+      .img {
         border-radius: 50%;
         width: 140px;
         height: 140px;
         margin-top: 5px;
-        margin-left: 12px;
+        margin-left: 40px;
       }
-    }
 
-    &.top-one div.info {
-      font-size: 25px;
-      padding: 35px 0 0 20px;
+      div.info {
+        font-size: 25px;
+        padding: 35px 0 0 40px;
+        margin-left: 20px;
+      }
     }
   }
 }
 
-#top-candidates div, #top-candidates img {
-  float: left;
-  margin-right: 5px;
-}
 
 .bold {
   font-weight: bold;
@@ -174,5 +178,163 @@
   .circle-vote {
     top: 150px;
     left: 90px;
+  }
+}
+
+@media (min-width: 995px) and (max-width: 1150px) {
+  #top-candidates {
+    .candidate {
+      .img {
+        width: 100px;
+        height: 100px;
+        margin-left: 25px;
+      }
+
+      .position {
+        font-size: 45px;
+      }
+
+      div.info {
+        padding-left: 15px;
+      }
+
+      &.top-one {
+        .img {
+          width: 120px;
+          height: 120px;
+        }
+
+        .position {
+          font-size: 80px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 995px) {
+  .total {
+    margin-right: 15px;
+  }
+
+  #ranking .head-left {
+    margin-left: 23px;
+  }
+
+  #top-candidates {
+    .candidate {
+      .img {
+        margin-left: 0;
+      }
+
+      .position {
+        font-size: 35px;
+      }
+
+      div.info {
+        padding-left: 0px;
+        margin-left: 0px;
+        max-width: 495px;
+      }
+
+      &.top-one {
+        padding-top: 30px;
+
+        .img {
+          margin-left: 0;
+        }
+
+        div.info {
+          padding-left: 0px;
+          margin-left: 0px;
+          max-width: 495px;
+        }
+
+        .position {
+          font-size: 45px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 730px) {
+  .total {
+    margin-right: 15px;
+  }
+
+  #ranking .head-left {
+    margin-left: 23px;
+  }
+
+  #top-candidates {
+    .candidate {
+      .img {
+        margin-left: 0;
+      }
+
+      .position {
+        font-size: 35px;
+      }
+
+      div.info {
+        padding-left: 0px;
+        margin-left: 0px;
+        max-width: 495px;
+      }
+
+      &.top-one {
+        padding-top: 30px;
+
+        .img {
+          margin-left: 0;
+        }
+
+        div.info {
+          padding-left: 0px;
+          margin-left: 0px;
+          max-width: 495px;
+        }
+
+        .position {
+          font-size: 45px;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 555px) and (max-width: 730px) {
+  .candidate {
+    div.info {
+      max-width: 300px !important;
+    }
+    &.top-one {
+      div.info {
+        max-width: 300px !important;
+      }
+    }
+  }
+}
+
+@media (max-width: 555px) {
+  .candidate {
+    .img {
+      display: none;
+    }
+
+    div.info {
+      max-width: 360px !important;
+    }
+
+    &.top-one {
+      .img {
+        display: none;
+      }
+
+      div.info {
+        max-width: 360px !important;
+      }
+    }
   }
 }

@@ -1,0 +1,40 @@
+// Aliases for common '@media' definitions across the project
+// exposed as mixins, so you don't have to remember all the pixels.
+//
+// Usage:
+//
+// @include media-large-desktop {
+//   .class {
+//
+//   }
+// }
+
+@mixin size-1 {
+  @media screen and (max-width: 555px) {
+    @content;
+  }
+}
+
+@mixin size-2 {
+  @media screen and (min-width: 555px) and (max-width: 730px) {
+    @content;
+  }
+}
+
+@mixin size-3 {
+  @media screen and (max-width: 730px) {
+    @content;
+  }
+}
+
+@mixin size-4 {
+  @media screen and (max-width: 995px) {
+    @content;
+  }
+}
+
+@mixin size-5 {
+  @media screen and (min-width: 995px) and (max-width: 1150px) {
+    @content;
+  }
+}
