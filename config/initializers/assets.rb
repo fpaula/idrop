@@ -9,4 +9,5 @@ Rails.application.config.assets.version = '1.0'
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
-Rails.application.config.assets.precompile += %w( widget/1.0/epicvotes.js )
+# Rails.application.config.assets.precompile += %w( jquery.js election.js candidates.js array-tool-belt.js )
+Rails.application.config.assets.precompile += %w( *.js )
