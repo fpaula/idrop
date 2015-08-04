@@ -41,6 +41,9 @@ group :development, :test do
   gem 'spring'
 
   gem 'mysql2'
+
+  gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano-rvm'
 end
 
 group :production do
