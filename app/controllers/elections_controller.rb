@@ -5,6 +5,9 @@ class ElectionsController < ApplicationController
 
   def show
     @election = Election.find(params[:id])
-    @total_votes = @election.ranking.reduce(0) { |sum, c| sum + c.total_votes }
+
+    if request.xhr?
+      render partial: 'elections/election', locals: { election: @election }
+    end
   end
 end
