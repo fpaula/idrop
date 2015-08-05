@@ -40,7 +40,9 @@ Candidate.create( name: "Penny Dreadful", nickname: "Penny Dreadful", image_url:
 
 Election.create(description: 'Qual é a melhor série?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: series)
 
-categoria = Category.create(name: 'Atriz')
+artista = Category.create(name: 'Artista')
+
+categoria = Category.create(name: 'Atriz', parent_id: artista.id)
 Candidate.create( name: "Bruna Marquezine", nickname: "Bruna Marquezine", image_url: "http://s2.glbimg.com/6RYvaX2vHiyPNyBCNxRQzmHjKlA=/e.glbimg.com/og/ed/f/original/2015/06/17/bruna.jpg", categories:[categoria])
 Candidate.create( name: "Ana Paula Arozio", nickname: "Ana Paula Arozio", image_url: "http://www.revistabula.com/wp/wp-content/uploads/2013/11/Ana-Paula-Ar%C3%B3sio.jpg", categories:[categoria])
 Candidate.create( name: "Taís Araújo", nickname: "Taís Araújo", image_url: "http://www.revistabula.com/wp/wp-content/uploads/2013/11/Ana-Paula-Ar%C3%B3sio.jpg", categories:[categoria])
@@ -63,7 +65,7 @@ Candidate.create( name: "Marina Ruy Barbosa", nickname: "Marina Ruy Barbosa", im
 
 Election.create(description: 'Qual é a atriz mais bonita?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
 
-categoria = Category.create(name: 'Ator')
+categoria = Category.create(name: 'Ator', parent_id: artista.id)
 Candidate.create( name: "Caio Castro", nickname: "Caio Castro", image_url: "http://capricho.abril.com.br/imagem/580x362/caio-castro40620.jpg", categories:[categoria])
 Candidate.create( name: "Cauã Reymond", nickname: "Cauã Reymond", image_url: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTXyWi8mJUE5VB-djgFcbEGaFBGc0eQq7mNeBeQwj60RjqzWg-L8g", categories:[categoria])
 Candidate.create( name: "Bruno Gagliasso", nickname: "Bruno Gagliasso", image_url: "http://imagens.revoltabrasil.com.br/2014/06/gagi.jpg", categories:[categoria])
@@ -88,7 +90,7 @@ Candidate.create( name: "Bruno Gissoni", nickname: "Bruno Gissoni", image_url: "
 
 Election.create(description: 'Qual é o ator mais bonito?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
 
-categoria = Category.create(name: 'Kpop - Feminino')
+categoria = Category.create(name: 'Kpop - Feminino', parent_id: artista.id)
 Candidate.create( name: "Taeyeon", nickname: "Taeyeon", image_url: "http://www.soompi.com/br/wp-content/blogs.dir/9/files/2013/08/Taeyeon.jpg", categories:[categoria])
 Candidate.create( name: "Tiffany", nickname: "Tiffany", image_url: "https://s-media-cache-ak0.pinimg.com/236x/93/86/2e/93862e0ffcdf84947a9aad8f12f38a2b.jpg", categories:[categoria])
 Candidate.create( name: "Sunny", nickname: "Sunny", image_url: "http://images5.fanpop.com/image/photos/25800000/SNSD-The-Boys-2nd-Teaser-kpop-25887895-640-360.jpg", categories:[categoria])
@@ -109,7 +111,7 @@ Candidate.create( name: "Minzy", nickname: "Minzy", image_url: "http://img.ohkpo
 
 Election.create(description: 'Qual é a melhor cantora de Kpop?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
 
-categoria = Category.create(name: 'Kpop - Masculino')
+categoria = Category.create(name: 'Kpop - Masculino', parent_id: artista.id)
 Candidate.create( name: "Siwon", nickname: "Siwon", image_url: "https://s-media-cache-ak0.pinimg.com/236x/cd/f4/07/cdf40798a623b41163f80f2c777c7115.jpg", categories:[categoria])
 Candidate.create( name: "Donghae", nickname: "Donghae", image_url: "http://images6.fanpop.com/image/photos/33200000/Donghae-kpop-4ever-33285089-491-392.jpg", categories:[categoria])
 Candidate.create( name: "Heechul", nickname: "Heechul", image_url: "https://s-media-cache-ak0.pinimg.com/236x/66/1a/a0/661aa0ba5e9a719747ba7c7ef6464bcc.jpg", categories:[categoria])
@@ -142,7 +144,11 @@ Candidate.create( name: "Jaejoong", nickname: "Jaejoong", image_url: "http://ima
 
 Election.create(description: 'Qual é o melhor cantor de Kpop?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
 
-categoria = Category.create(name: 'Times Brasileiros')
+esporte = Category.create(name: 'Esporte')
+
+futebol = Category.create(name: 'Futebol', parent_id: esporte.id)
+
+categoria = Category.create(name: 'Times Brasileiros', parent_id: futebol.id)
 Candidate.create( name: "América - Belo Horizonte MG", nickname: "América-MG", image_url: "http://aimore.org/escudos/America_MG.jpg", categories:[categoria])
 Candidate.create( name: "Atlético Clube Goianiense", nickname: "Atlético-GO", image_url: "http://aimore.org/escudos/Atletico_Goianiense.jpg", categories:[categoria])
 Candidate.create( name: "Clube Atlético Mineiro", nickname: "Atlético-MG", image_url: "http://aimore.org/escudos/Atletico_Mineiro.jpg", categories:[categoria])
