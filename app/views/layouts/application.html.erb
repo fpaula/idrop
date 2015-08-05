@@ -20,80 +20,78 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
 </head>
-
   <body>
-      <!-- Navigation -->
-      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-          <div class="container">
-              <!-- Brand and toggle get grouped for better mobile display -->
-              <div class="navbar-header">
-                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                  </button>
-                  <div id="logo">
-                    <a href="/">EPICVOTES</a>
-                  </div>
-              </div>
-              <!-- Collect the nav links, forms, and other content for toggling -->
-              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                  <ul class="nav navbar-nav navbar-right">
-                    <% if user_signed_in? %>
-                      <li>
-                        <a href="javascript:;">
-                          <% if current_user.image %>
-                            <%= image_tag current_user.image, class: 'user-image' %>
-                          <% end %>
-                          <%= current_user.exhibition_name %>
-                        </a>
-                      </li>
-                      <li role="separator" class="divider"></li>
-                      <li>
-                        <%= link_to('Sair', destroy_user_session_path, :method => :delete) %>
-                      </li>
-                    <% else %>
-                      <li>
-                        <%= link_to('Entrar', new_user_session_path) %>
-                      </li>
-                    <% end %>
-                  </ul>
-              </div>
-              <!-- /.navbar-collapse -->
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+          </button>
+          <div id="logo" data-ga-event='Header, logo'>
+            <a href="/">EPICVOTES</a>
           </div>
-          <!-- /.container -->
-      </nav>
+        </div>
 
-      <!-- Page Content -->
-      <%= yield %>
-      <!-- /.container -->
-
-      <div class="row footer">
-        <!-- Footer -->
-        <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Cacatua Corp 2015</p>
-                </div>
-            </div>
-        </footer>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+              <li>
+                <a href="javascript:;">
+                  <% if current_user.image %>
+                    <%= image_tag current_user.image, class: 'user-image' %>
+                  <% end %>
+                  <%= current_user.exhibition_name %>
+                </a>
+              </li>
+              <li role="separator" class="divider"></li>
+              <li>
+                <%= link_to('Sair', destroy_user_session_path, :method => :delete, 'data-ga-event' => 'Header, Sair') %>
+              </li>
+            <% else %>
+              <li>
+                <%= link_to('Entrar', new_user_session_path, 'data-ga-event' => 'Header, Entrar') %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <!-- /.navbar-collapse -->
       </div>
       <!-- /.container -->
+    </nav>
 
-      <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-      <%= yield(:javascripts) %>
-      <script>
-        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    <!-- Page Content -->
+    <%= yield %>
+    <!-- /.container -->
 
-        ga('create', 'UA-65876316-1', 'auto');
-        ga('send', 'pageview');
+    <div class="row footer">
+      <!-- Footer -->
+      <footer>
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Copyright &copy; Cacatua Corp 2015</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- /.container -->
 
-      </script>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= yield(:javascripts) %>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-65876316-1', 'auto');
+      ga('send', 'pageview');
+    </script>
   </body>
 </html>
