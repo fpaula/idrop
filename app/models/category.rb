@@ -20,5 +20,4 @@ class Category < ActiveRecord::Base
       errors.add(:parent, "can't be itself")
     end
   end
-
 end

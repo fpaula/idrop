@@ -1,10 +1,10 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:index, :show, :new, :edit, :update]
 
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all
   end
 
   # GET /categories/1
@@ -15,20 +15,16 @@ class CategoriesController < ApplicationController
   # GET /categories/new
   def new
     @category = Category.new
-    @categories = Category.order(:name)
   end
 
   # GET /categories/1/edit
   def edit
-    @category = Category.find(params[:id])
-    @categories = Category.order(:name)
   end
 
   # POST /categories
   # POST /categories.json
   def create
     @category = Category.new(category_params)
-
     respond_to do |format|
       if @category.save
         format.html { redirect_to @category, notice: 'Category was successfully created.' }
@@ -68,6 +64,10 @@ class CategoriesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @category = Category.find(params[:id])
+    end
+
+    def set_categories
+      @categories = Category.order(:name)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
