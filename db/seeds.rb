@@ -38,7 +38,7 @@ Candidate.create( name: "Dexter", nickname: "Dexter", image_url: "http://www.oba
 Candidate.create( name: "How To Get Away With Murder", nickname: "How To Get Away With Murder", image_url: "http://www.guiadeseriados.com.br/wp-content/uploads/2015/02/how-to-get-away-with-murder-1.jpg", categories:[series])
 Candidate.create( name: "Penny Dreadful", nickname: "Penny Dreadful", image_url: "http://mb.web.sapo.io/bef6fe6c02ab5beaf0a6c4599ad8b776a9218874.jpg", categories:[series])
 
-Election.create(description: 'Qual é a melhor série?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: series)
+Election.create(title: 'Qual é a melhor série?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: series)
 
 artista = Category.create(name: 'Artista')
 
@@ -63,7 +63,7 @@ Candidate.create( name: "Fernanda Machado", nickname: "Fernanda Machado", image_
 Candidate.create( name: "Mariana Ximenes", nickname: "Mariana Ximenes", image_url: "http://tv.i.uol.com.br/televisao/2010/11/08/para-a-atriz-mariana-ximenes-dar-vida-a-clara-de-passione-significa-estar-em-constante-mudanca-1289265349580_615x300.jpg", categories:[categoria])
 Candidate.create( name: "Marina Ruy Barbosa", nickname: "Marina Ruy Barbosa", image_url: "http://fotos.caras.uol.com.br/media/images/mobile/2014/01/13/img-577227-marina-ruy-barbosa20140113151389632689.JPG", categories:[categoria])
 
-Election.create(description: 'Qual é a atriz mais bonita?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
+Election.create(title: 'Qual é a atriz mais bonita?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
 
 categoria = Category.create(name: 'Ator', parent_id: artista.id)
 Candidate.create( name: "Caio Castro", nickname: "Caio Castro", image_url: "http://capricho.abril.com.br/imagem/580x362/caio-castro40620.jpg", categories:[categoria])
@@ -88,7 +88,7 @@ Candidate.create( name: "Guilherme Laicam", nickname: "Guilherme Laicam", image_
 Candidate.create( name: "Thiago Lacerda", nickname: "Thiago Lacerda", image_url: "http://fotos.caras.uol.com.br/media/images/raw/2014/09/10/img-631007-thiago-lacerda20140910201410390669.jpg", categories:[categoria])
 Candidate.create( name: "Bruno Gissoni", nickname: "Bruno Gissoni", image_url: "http://capricho.abril.com.br/imagem/580x362/bruno-gissoni40622.jpg", categories:[categoria])
 
-Election.create(description: 'Qual é o ator mais bonito?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
+Election.create(title: 'Qual é o ator mais bonito?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
 
 categoria = Category.create(name: 'Kpop - Feminino', parent_id: artista.id)
 Candidate.create( name: "Taeyeon", nickname: "Taeyeon", image_url: "http://www.soompi.com/br/wp-content/blogs.dir/9/files/2013/08/Taeyeon.jpg", categories:[categoria])
@@ -109,7 +109,7 @@ Candidate.create( name: "CL", nickname: "CL", image_url: "http://images.au.kpops
 Candidate.create( name: "Park bom", nickname: "Park bom", image_url: "http://images5.fanpop.com/image/photos/32000000/Park-Bom-yg-k-pop-battle-of-the-bands-32023652-1280-936.jpg", categories:[categoria])
 Candidate.create( name: "Minzy", nickname: "Minzy", image_url: "http://img.ohkpop.com/2013/05/09/BP85GC67.jpg", categories:[categoria])
 
-Election.create(description: 'Qual é a melhor cantora de Kpop?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
+Election.create(title: 'Qual é a melhor cantora de Kpop?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
 
 categoria = Category.create(name: 'Kpop - Masculino', parent_id: artista.id)
 Candidate.create( name: "Siwon", nickname: "Siwon", image_url: "https://s-media-cache-ak0.pinimg.com/236x/cd/f4/07/cdf40798a623b41163f80f2c777c7115.jpg", categories:[categoria])
@@ -142,7 +142,7 @@ Candidate.create( name: "P.o", nickname: "P.o", image_url: "http://img.ohkpop.co
 Candidate.create( name: "Youngjae", nickname: "Youngjae", image_url: "https://s-media-cache-ak0.pinimg.com/236x/26/69/d3/2669d32992115748201a7aaafb608e3a.jpg", categories:[categoria])
 Candidate.create( name: "Jaejoong", nickname: "Jaejoong", image_url: "http://images6.fanpop.com/image/photos/35800000/JYJ-Jaejoong-kpop-vocalist-35895959-620-413.jpg", categories:[categoria])
 
-Election.create(description: 'Qual é o melhor cantor de Kpop?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
+Election.create(title: 'Qual é o melhor cantor de Kpop?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
 
 esporte = Category.create(name: 'Esporte')
 
@@ -188,7 +188,7 @@ Candidate.create( name: "Sport Club do Recife", nickname: "Sport", image_url: "h
 Candidate.create( name: "Club de Regatas Vasco da Gama", nickname: "Vasco", image_url: "http://aimore.org/escudos/Vasco.jpg", categories:[categoria])
 Candidate.create( name: "Esporte Clube Vitória", nickname: "Vitória", image_url: "http://aimore.org/escudos/Vitoria.jpg", categories:[categoria])
 
-Election.create(description: 'Qual é o melhor time do Brasil?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
+Election.create(title: 'Qual é o melhor time do Brasil?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
 
 categoria = Category.create(name: 'Anime')
 Candidate.create( name: "Nisekoi 2", nickname: "Nisekoi 2", image_url: "http://www.animexis.com.br/wp-content/uploads/2015/03/Nisekoi-2nd-season-visual-322x450.jpg?266208", categories:[categoria])
@@ -242,4 +242,4 @@ Candidate.create( name: "Pokémon", nickname: "Pokémon", image_url: "http://3.b
 Candidate.create( name: "YU-GI-OH", nickname: "YU-GI-OH", image_url: "http://1.bp.blogspot.com/-QinMRDmRiOU/Ux_U1HeButI/AAAAAAAAAgU/fGDTpR9AiRQ/s1600/classic_1_wallpaper_1280x800+(1).jpg", categories:[categoria])
 Candidate.create( name: "Inuyasha", nickname: "Inuyasha", image_url: "http://4.bp.blogspot.com/-NVYmCoCQ46I/UyBf8VcAMDI/AAAAAAAAAiI/4Rrlgrp-yQo/s1600/InuYasha.(Character).full.1230954.jpg", categories:[categoria])
 
-Election.create(description: 'Qual é o melhor anime?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
+Election.create(title: 'Qual é o melhor anime?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)

@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20150805140337) do
   end
 
   create_table "elections", force: :cascade do |t|
-    t.string   "description", limit: 255
+    t.string   "title",       limit: 255
     t.datetime "start_date"
     t.datetime "finish_date"
     t.integer  "category_id", limit: 4
