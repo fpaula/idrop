@@ -39,7 +39,7 @@
                           <% category_name = election.category.name.gsub(',', '') %>
 
                           <h4>
-                            <%= link_to election.category.name, election_path(election),
+                            <%= link_to election.category.name, category_path(election.category),
                                   'data-ga-event' => "Home, Link do duelo, #{category_name}" %>
                           </h4>
 

@@ -1,4 +1,8 @@
 class Category < ActiveRecord::Base
+  extend FriendlyId
+
+  friendly_id :name, use: :slugged
+
   validate :valid_parent
 
   belongs_to :parent, class_name: "Category", foreign_key: "parent_id"
