@@ -4,6 +4,6 @@ class ElectionsController < ApplicationController
   end
 
   def show
-    @election = Election.find(params[:id])
+    @election = Election.friendly.find(params[:id])
   end
 end

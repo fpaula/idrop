@@ -27,22 +27,29 @@
                       </a>
                   </div>
               </div>
-
           </div>
 
           <div class="row">
-            <% @highlights.each do |highlight| %>
+            <% @elections.each do |election| %>
               <div class="col-sm-4 col-lg-4 col-md-4">
                   <div class="thumbnail">
-                      <img src="<%= highlight.image_url %>" alt="">
+                      <img src="<%= election.image_url %>" alt="">
                       <div class="caption">
                           <h4 class="pull-right"></h4>
-                          <h4><a href="/election/<%= highlight.id %>" data-ga-event='Home, Link do duelo, <%= highlight.category.name.gsub(',', '') %>'><%= highlight.category.name %></a>
+                          <% category_name = election.category.name.gsub(',', '') %>
+
+                          <h4>
+                            <%= link_to election.category.name, election_path(election),
+                                  'data-ga-event' => "Home, Link do duelo, #{category_name}" %>
                           </h4>
-                          <p><a href="/election/<%= highlight.id %>"><%= highlight.description %></a>.</p>
+
+                          <p>
+                            <%= link_to election.description, election_path(election),
+                                  'data-ga-event' => "Home, Descrição do duelo, #{category_name}" %>
+                          </p>
                       </div>
                       <div class="ratings">
-                          <p class="pull-right">Total de votos: <%= highlight.total_votes %></p>
+                          <p class="pull-right">Total de votos: <%= election.total_votes %></p>
                           <p>
                               <span class="glyphicon glyphicon-star"></span>
                               <span class="glyphicon glyphicon-star"></span>
