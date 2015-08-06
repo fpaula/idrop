@@ -1,4 +1,6 @@
 class Category < ActiveRecord::Base
+  validate :valid_parent
+
   belongs_to :parent, class_name: "Category", foreign_key: "parent_id"
   has_many :children, class_name: "Category", foreign_key: "parent_id"
   has_and_belongs_to_many :candidates
@@ -11,5 +13,11 @@ class Category < ActiveRecord::Base
 
   def image_url
     self.try(:candidates).try(:first).try(:image_url)
+  end
+
+  def valid_parent
+    if self.id == self.parent_id
+      errors.add(:parent, "can't be itself")
+    end
   end
 end
