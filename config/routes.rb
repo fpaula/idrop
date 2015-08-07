@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   resources :candidates
+
   resources :categories
+
+  namespace :admin do
+    resources :categories
+  end
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   post 'votes', to: 'votes#create'
