@@ -6,8 +6,11 @@ class CreateElections < ActiveRecord::Migration
       t.datetime :finish_date
       t.integer :category_id
       t.string :status
+      t.string :slug
 
       t.timestamps null: false
     end
+
+    add_index :elections, :slug
   end
 end

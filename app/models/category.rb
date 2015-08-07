@@ -3,7 +3,7 @@ class Category < ActiveRecord::Base
 
   friendly_id :name, use: :slugged
 
-  validate :valid_parent
+  validate :valid_parent, on: :update
 
   belongs_to :parent, class_name: "Category", foreign_key: "parent_id"
   has_many :children, class_name: "Category", foreign_key: "parent_id"
