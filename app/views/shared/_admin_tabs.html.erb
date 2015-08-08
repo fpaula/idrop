@@ -1,0 +1,19 @@
+<%= active ||= 'dashboard' %>
+
+<ul class="nav nav-tabs" id='admin-tabs'>
+  <li role="presentation" <%= 'class=active' if active == 'dashboard' %>>
+    <%= link_to dashboard_path do %>
+      <i class='fa fa-area-chart'></i> Dashboard
+    <% end %>
+  </li>
+  <li role="presentation" <%= 'class=active' if active == 'categories' %>>
+    <%= link_to admin_categories_path do %>
+      <i class='fa fa-folder'></i> Categories
+    <% end %>
+  </li>
+  <li role="presentation" <%= 'class=active' if active == 'elections' %>>
+    <%= link_to admin_elections_path do %>
+      <i class='fa fa-group'></i> Elections
+    <% end %>
+  </li>
+</ul>

@@ -1,5 +1,5 @@
 .admin-container {
-  margin-top: 45px;
+  margin-top: 10px;
   min-height: 510px;
 
   .icon {
@@ -33,6 +33,14 @@
   }
 }
 
-#category_name, #category_parent_id {
+#category_name, #category_parent_id, #election_title, #election_category_id {
   width: 415px;
+}
+
+#admin-tabs {
+  margin-top: 70px;
+}
+
+#admin-tabs .active i {
+  color: #008000;
 }

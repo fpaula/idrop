@@ -3,30 +3,30 @@
 <div class="container admin-container">
   <%= render partial: 'shared/notice_growl' %>
 
-  <h1><%= @category.name %></h1>
+  <h1><%= @election.title %></h1>
 
   <p>
-    <strong>Name:</strong>
-    <%= @category.name %>
+    <strong>Title:</strong>
+    <%= @election.title %>
   </p>
 
   <p>
-    <strong>Parent:</strong>
-    <%= @category.parent_id %>
+    <strong>Category:</strong>
+    <%= @election.category.name %>
   </p>
 
   <p>
     <strong>Status:</strong>
-    <%= @category.status %>
+    <%= @election.status %>
   </p>
 
-  <%= link_to edit_admin_category_path(@category) do %>
+  <%= link_to edit_admin_election_path(@election) do %>
     <%= button_tag type: 'button', class: 'btn btn-default btn-white' do %>
       <i class='fa fa-edit'></i> Edit
     <% end %>
   <% end %>
 
-  <%= link_to admin_categories_path do %>
+  <%= link_to admin_elections_path do %>
     <%= button_tag type: 'button', class: 'btn btn-default btn-white' do %>
       <i class='fa fa-mail-reply'></i> Go back
     <% end %>

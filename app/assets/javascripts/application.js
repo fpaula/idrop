@@ -15,4 +15,6 @@
 //= require turbolinks
 //= require_tree .
 //= require select2
+//= require raphael.min
+//= require morris
 //= require jquery.bootstrap-growl

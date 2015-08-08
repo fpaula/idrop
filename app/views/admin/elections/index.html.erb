@@ -3,34 +3,36 @@
 <div class="container admin-container">
   <%= render partial: 'shared/notice_growl' %>
 
-  <h1>Listing Categories</h1>
+  <h1>Listing Elections</h1>
 
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Name</th>
+        <th>Title</th>
+        <th>Category</th>
         <th>Active?</th>
         <th colspan="3"></th>
       </tr>
     </thead>
 
     <tbody>
-      <% @categories.each do |category| %>
+      <% @elections.each do |election| %>
         <tr>
-          <td style="padding:5px;"><%= nested_category(category.id) %></td>
-          <td style="padding:5px;"><%= category.status %></td>
+          <td style="padding:5px;"><%= election.title %></td>
+          <td style="padding:5px;"><%= election.category.name %></td>
+          <td style="padding:5px;"><%= election.status == '1' %></td>
           <td class='icon'>
-            <%= link_to admin_category_path(category) do %>
+            <%= link_to admin_election_path(election) do %>
               <i class="fa fa-plus"></i>
             <% end %>
           </td>
           <td class='icon'>
-            <%= link_to edit_admin_category_path(category) do %>
+            <%= link_to edit_admin_election_path(election) do %>
               <i class="fa fa-edit"></i>
             <% end %>
           </td>
           <td class='icon'>
-            <%= link_to admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <%= link_to admin_election_path(election), method: :delete, data: { confirm: 'Are you sure?' } do %>
               <i class="fa fa-trash-o"></i>
             <% end %>
           </td>
@@ -41,8 +43,8 @@
 
   <br />
   <p>
-    <%= link_to new_admin_category_path, class: 'btn btn-success' do %>
-      <i class='fa fa-plus'></i> New Category
+    <%= link_to new_admin_election_path, class: 'btn btn-success' do %>
+      <i class='fa fa-plus'></i> New Election
     <% end %>
   </p>
 </div>

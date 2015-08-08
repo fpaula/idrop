@@ -1,0 +1,41 @@
+<%= form_for([:admin, @election]) do |f| %>
+  <% if @election.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@election.errors.count, "error") %> prohibited this election from being saved:</h2>
+
+      <ul>
+      <% @election.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: 'form-control', placeholder: 'Type the title of the election' %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :category_id %><br>
+    <%= f.select :category_id, options_for_select(@categories, selected: f.object.category_id), {}, { include_blank: true, 'data-select' => 1 } %>
+  </div>
+
+  <div class="field form-group">
+    <%= f.label :Active? %>
+    <%= f.check_box :status %>
+  </div>
+
+  <br />
+  <hr />
+
+  <div class="actions">
+    <%= f.submit class: 'btn btn-success' %>
+
+    <%= link_to admin_elections_path do %>
+      <%= f.button type: 'button', class: 'btn btn-danger' do %>
+        <i class='fa fa-mail-reply'></i> Go back
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

@@ -40,31 +40,16 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-right">
-            <% if user_signed_in? %>
-              <li>
-                <a href="javascript:;">
-                  <% if current_user.image %>
-                    <%= image_tag current_user.image, class: 'user-image' %>
-                  <% end %>
-                  <%= current_user.exhibition_name %>
-                </a>
-              </li>
-              <li role="separator" class="divider"></li>
-              <li>
-                <%= link_to('Sair', destroy_user_session_path, :method => :delete, 'data-ga-event' => 'Header, Sair') %>
-              </li>
-            <% else %>
-              <li>
-                <%= link_to('Entrar', new_user_session_path, 'data-ga-event' => 'Header, Entrar') %>
-              </li>
-            <% end %>
-          </ul>
+          <%= render partial: 'shared/header_menu' %>
         </div>
         <!-- /.navbar-collapse -->
       </div>
       <!-- /.container -->
     </nav>
+
+    <!-- Admin menus -->
+    <%= yield(:admin_menus) %>
+    <!-- /.container -->
 
     <!-- Page Content -->
     <%= yield %>
