@@ -1,0 +1,5 @@
+<%= content_for :javascripts do %>
+  <script>
+    $.bootstrapGrowl("<%= notice %>");
+  </script>
+<% end if notice.present?%>

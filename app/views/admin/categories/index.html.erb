@@ -1,5 +1,5 @@
 <div class="container admin-container">
-  <p id="notice"><%= notice %></p>
+  <%= render partial: 'notice_growl' %>
 
   <h1>Listing Categories</h1>
 
@@ -29,8 +29,8 @@
           </td>
           <td class='icon'>
             <%= link_to admin_category_path(category), method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <i class="fa fa-trash-o"></i>
-          <% end %>
+              <i class="fa fa-trash-o"></i>
+            <% end %>
           </td>
         </tr>
       <% end %>
@@ -39,7 +39,7 @@
 
   <br />
   <p>
-    <%= link_to new_admin_category_path, class: 'btn btn-default' do %>
+    <%= link_to new_admin_category_path, class: 'btn btn-success' do %>
       <i class='fa fa-plus'></i> New Category
     <% end %>
   </p>

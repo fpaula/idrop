@@ -15,15 +15,29 @@
     <%= f.label :name %><br>
     <%= f.text_field :name, class: 'form-control', placeholder: 'Type the name of the category' %>
   </div>
+
   <div class="field form-group">
     <%= f.label :parent_id %><br>
-    <%= f.select :parent_id, options_for_select(nested_categories(@categories), :selected => f.object.parent_id), include_blank: true %>
+    <%= f.select :parent_id, options_for_select(nested_categories(@categories), selected: f.object.parent_id), {}, { include_blank: true, 'data-select' => 1 } %>
   </div>
+
   <div class="field form-group">
     <%= f.label :Active? %>
     <%= f.check_box :status %>
   </div>
+
+  <br />
+
+  <hr />
+
   <div class="actions">
-    <%= f.submit class: 'btn btn-default' %>
+    <%= f.submit class: 'btn btn-success' %>
+
+    <%= link_to admin_categories_path do %>
+      <%= f.button type: 'button', class: 'btn btn-danger' do %>
+        <i class='fa fa-mail-reply'></i> Go back
+      <% end %>
+    <% end %>
+
   </div>
 <% end %>

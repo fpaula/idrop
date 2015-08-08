@@ -1,18 +1,38 @@
 .admin-container {
   margin-top: 45px;
+  min-height: 510px;
 
   .icon {
     width: 25px;
     padding: 5px;
   }
 
+  .btn {
+    color: #fff;
+
+    .fa-plus {
+      color: #fff;
+    }
+  }
+
+  .btn-white {
+    color: #000;
+  }
+
+  .fa-trash-o {
+    color: #b43030;
+  }
+
+  .fa-plus {
+    color: #439A43;
+  }
+
   form {
-    min-height: 300px;
+    padding: 10px;
     border-left: 2px solid #5B8A8C;
-    padding-left: 10px;
   }
 }
 
-#category_name {
+#category_name, #category_parent_id {
   width: 415px;
 }

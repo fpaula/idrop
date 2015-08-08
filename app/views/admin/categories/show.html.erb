@@ -1,5 +1,7 @@
 <div class="container admin-container">
-  <p id="notice"><%= notice %></p>
+  <%= render partial: 'notice_growl' %>
+
+  <h1><%= @category.name %></h1>
 
   <p>
     <strong>Name:</strong>
@@ -16,6 +18,15 @@
     <%= @category.status %>
   </p>
 
-  <%= link_to 'Edit', edit_admin_category_path(@category) %> |
-  <%= link_to 'Back', admin_categories_path %>
+  <%= link_to edit_admin_category_path(@category) do %>
+    <%= button_tag type: 'button', class: 'btn btn-default btn-white' do %>
+      <i class='fa fa-edit'></i> Edit
+    <% end %>
+  <% end %>
+
+  <%= link_to admin_categories_path do %>
+    <%= button_tag type: 'button', class: 'btn btn-default btn-white' do %>
+      <i class='fa fa-mail-reply'></i> Go back
+    <% end %>
+  <% end %>
 </div>
