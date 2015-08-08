@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'form-control', placeholder: 'Type the name of the category' %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :parent_id %><br>
     <%= f.select :parent_id, options_for_select(nested_categories(@categories), :selected => f.object.parent_id), include_blank: true %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :Active? %>
     <%= f.check_box :status %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-default' %>
   </div>
 <% end %>
