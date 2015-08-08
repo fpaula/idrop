@@ -80,7 +80,7 @@ fn._prepareCandidate = function(panel, id) {
   image.fadeOut(function() {
     image.css('background-image', 'url(' + candidate.image_url + ')');
     subtitle.text(candidate.name);
-    image.data('id', id);
+    image.attr('data-id', id);
     image.fadeIn();
   });
 };
