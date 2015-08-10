@@ -3,11 +3,12 @@ class Vote < ActiveRecord::Base
     where("created_at >= ? AND created_at <= ?", start_date.strftime('%Y-%m-%d'), end_date.strftime('%Y-%m-%d'))
   }
 
-  # TODO
   def self.count_by_date(start_date, end_date)
-    created_between(7.days.ago, Time.now)
-    .select("DATE_FORMAT(created_at, '%Y-%m-01') AS date, count(id) AS total")
-    #.map {|x| [:id, :created_at]}
-    #.group_by(&:created_at)
+    date = 'DATE(created_at)'
+
+    created_between(start_date, end_date)
+      .select("#{date} AS created_at, count(id) AS total")
+      .group(date)
+      .map { |vote| [vote.created_at.strftime('%Y-%m-%d'), vote['total']] }
   end
 end

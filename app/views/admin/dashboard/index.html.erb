@@ -13,19 +13,30 @@
       // Chart data records -- each entry in this array corresponds to a point on
       // the chart.
       data: [
-        { day: '2008', value: 20 },
-        { day: '2009', value: 10 },
-        { day: '2010', value: 5 },
-        { day: '2011', value: 5 },
-        { day: '2012', value: 20 }
+        <% @votes_per_day.each do |data| %>
+          { date: '<%= data[0] %>', votes: '<%= data[1] %>' },
+        <% end %>
       ],
       // The name of the data record attribute that contains x-values.
-      xkey: 'day',
+      xkey: 'date',
       // A list of names of data record attributes that contain y-values.
-      ykeys: ['value'],
+      ykeys: ['votes'],
       // Labels for the ykeys -- will be displayed when you hover over the
       // chart.
-      labels: ['Value']
+      labels: ['Value'],
+
+      lineColors: ['green'],
+
+      xLabels: 'day',
+
+      xLabelFormat: function(d) {
+        return d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear();
+      },
+
+      dateFormat: function(strDate) {
+        var d = new Date(strDate);
+        return d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear();
+      }
     });
   </script>
 <% end %>
