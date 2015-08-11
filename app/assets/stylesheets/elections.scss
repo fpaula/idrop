@@ -1,3 +1,5 @@
+@import 'mixins/media-queries';
+
 #election {
   margin-bottom: 15px;
 
@@ -185,7 +187,7 @@
   }
 }
 
-@media (min-width: 995px) and (max-width: 1150px) {
+@include size-5 {
   #top-candidates {
     .candidate {
       .img {
@@ -216,7 +218,7 @@
   }
 }
 
-@media (max-width: 995px) {
+@include size-4 {
   .total {
     margin-right: 15px;
   }
@@ -262,7 +264,7 @@
   }
 }
 
-@media (max-width: 730px) {
+@include size-3 {
   .total {
     margin-right: 15px;
   }
@@ -308,7 +310,7 @@
   }
 }
 
-@media (min-width: 555px) and (max-width: 730px) {
+@include size-2 {
   .candidate {
     div.info {
       max-width: 300px !important;
@@ -321,7 +323,7 @@
   }
 }
 
-@media (max-width: 555px) {
+@include size-1 {
   .candidate {
     .img {
       display: none;

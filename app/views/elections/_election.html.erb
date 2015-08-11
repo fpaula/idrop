@@ -54,7 +54,7 @@
       <div class='total pull-right light-gray'>Total de votos: <span><%= number_with_delimiter(election.total_votes, delimiter: '.') %></span></div>
 
       <div id='top-candidates'>
-        <% election.ranking.each_with_index do |candidate, position| %>
+        <% election.top(10).each_with_index do |candidate, position| %>
           <%= render partial: 'elections/ranking_candidate', locals: { position: position + 1, candidate: candidate }  %>
         <% end %>
       </div>

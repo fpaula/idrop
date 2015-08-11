@@ -23,6 +23,10 @@ class Election < ActiveRecord::Base
     @total_votes ||= ranking.reduce(0) { |sum, c| sum + c.total_votes }
   end
 
+  def top(count)
+    ranking.take(count)
+  end
+
   def image_url
     self.candidates.try(:first).try(:image_url)
   end
