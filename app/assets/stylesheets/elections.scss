@@ -125,7 +125,7 @@
     div.info {
       font-size: 22px;
       padding: 50px 0 0 20px;
-      margin-left: 20px;
+      margin-left: 30px;
     }
 
     div {
@@ -144,7 +144,7 @@
         width: 140px;
         height: 140px;
         margin-top: 5px;
-        margin-left: 40px;
+        margin-left: 55px;
         background-repeat: no-repeat;
         background-color: #000;
       }
@@ -152,7 +152,7 @@
       div.info {
         font-size: 25px;
         padding: 35px 0 0 40px;
-        margin-left: 20px;
+        margin-left: 65px;
       }
     }
   }
@@ -187,13 +187,13 @@
   }
 }
 
-@include size-5 {
+@include tablet-only {
   #top-candidates {
     .candidate {
       .img {
         width: 100px;
         height: 100px;
-        margin-left: 25px;
+        margin-left: 0;
       }
 
       .position {
@@ -202,144 +202,73 @@
 
       div.info {
         padding-left: 15px;
+        margin-left: -25px;
       }
 
       &.top-one {
         .img {
           width: 120px;
           height: 120px;
+          margin-left: -20px;
+          margin-top: 12px;
         }
 
         .position {
           font-size: 80px;
         }
+
+        div.info {
+          margin-left: -50px;
+        }
+
       }
     }
   }
 }
 
-@include size-4 {
-  .total {
-    margin-right: 15px;
-  }
-
-  #ranking .head-left {
-    margin-left: 23px;
+@include mobile-only {
+  .total, #ranking .head-left {
+    width: 100%;
+    text-align: center;
+    margin: 0;
   }
 
   #top-candidates {
     .candidate {
       .img {
-        margin-left: 0;
+        margin: 23px 0 0 0;
+        width: 80px !important;
+        height: 80px !important;
       }
 
       .position {
-        font-size: 35px;
+        font-size: 30px;
+        padding: 0;
+        margin: 40px 0 0 0;
       }
 
       div.info {
         padding-left: 0px;
         margin-left: 0px;
-        max-width: 495px;
+        font-size: 18px !important;
       }
 
       &.top-one {
         padding-top: 30px;
 
-        .img {
-          margin-left: 0;
-        }
-
         div.info {
           padding-left: 0px;
           margin-left: 0px;
-          max-width: 495px;
         }
-
-        .position {
-          font-size: 45px;
-        }
-      }
-    }
-  }
-}
-
-@include size-3 {
-  .total {
-    margin-right: 15px;
-  }
-
-  #ranking .head-left {
-    margin-left: 23px;
-  }
-
-  #top-candidates {
-    .candidate {
-      .img {
-        margin-left: 0;
-      }
-
-      .position {
-        font-size: 35px;
-      }
-
-      div.info {
-        padding-left: 0px;
-        margin-left: 0px;
-        max-width: 495px;
-      }
-
-      &.top-one {
-        padding-top: 30px;
 
         .img {
-          margin-left: 0;
-        }
-
-        div.info {
-          padding-left: 0px;
-          margin-left: 0px;
-          max-width: 495px;
+          margin: 15px 0 0 0;
         }
 
         .position {
-          font-size: 45px;
+          font-size: 30px;
+          margin: 0;
         }
-      }
-    }
-  }
-}
-
-@include size-2 {
-  .candidate {
-    div.info {
-      max-width: 300px !important;
-    }
-    &.top-one {
-      div.info {
-        max-width: 300px !important;
-      }
-    }
-  }
-}
-
-@include size-1 {
-  .candidate {
-    .img {
-      display: none;
-    }
-
-    div.info {
-      max-width: 360px !important;
-    }
-
-    &.top-one {
-      .img {
-        display: none;
-      }
-
-      div.info {
-        max-width: 360px !important;
       }
     }
   }
