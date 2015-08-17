@@ -30,6 +30,8 @@ gem 'omniauth-facebook'
 
 gem 'friendly_id', '~> 5.1.0'
 
+gem 'redis-rails'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :development, :test do
@@ -46,6 +48,8 @@ group :development, :test do
 
   gem 'capistrano', '~> 3.4.0'
   gem 'capistrano-rvm'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
 group :production do
