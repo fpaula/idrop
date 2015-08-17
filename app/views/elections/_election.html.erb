@@ -16,15 +16,24 @@
     </div>
   </div>
 
+  <% combination = election.random_combination %>
   <div class='row' id='election'>
     <div class='col-md-1'></div>
     <div class='col-md-10'>
-      <section id='versus'>
-        <%= render partial: 'elections/candidate_panel', locals: { position: 'left' } %>
+      <section id='versus' data-combination='<%= combination.id %>'>
+        <%= render partial: 'elections/candidate_panel',
+          locals: {
+            position: 'left',
+            candidate: combination.candidate_1
+          } %>
 
         <div id='center'> X </div>
 
-        <%= render partial: 'elections/candidate_panel', locals: { position: 'right' } %>
+        <%= render partial: 'elections/candidate_panel',
+          locals: {
+            position: 'right',
+            candidate: combination.candidate_2
+          } %>
 
         <div id='bottom'>
           <button data-next-candidates id='next-candidates' data-ga-event='Election, Pular esse duelo'>Pular esse duelo</button>
@@ -38,8 +47,7 @@
   <% content_for :javascripts do %>
     <script>
       $(document).ready(function() {
-        var candidates = <%= raw(election.candidates.to_json) %>;
-        new Election(<%= election.id %>, candidates).start();
+        new Election(<%= election.id %>);
       });
     </script>
   <% end %>

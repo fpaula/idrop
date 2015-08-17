@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805135828) do
+ActiveRecord::Schema.define(version: 20150812140540) do
+
+  create_table "candidate_combinations", force: :cascade do |t|
+    t.integer "election_id",    limit: 4
+    t.integer "candidate_id_1", limit: 4
+    t.integer "candidate_id_2", limit: 4
+  end
+
+  add_index "candidate_combinations", ["candidate_id_1"], name: "fk_rails_5d243c522d", using: :btree
+  add_index "candidate_combinations", ["candidate_id_2"], name: "fk_rails_71d9e9329b", using: :btree
+  add_index "candidate_combinations", ["election_id"], name: "index_candidate_combinations_election_id", using: :btree
 
   create_table "candidates", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -109,4 +119,7 @@ ActiveRecord::Schema.define(version: 20150805135828) do
     t.datetime "updated_at",             null: false
   end
 
+  add_foreign_key "candidate_combinations", "candidates", column: "candidate_id_1", on_delete: :cascade
+  add_foreign_key "candidate_combinations", "candidates", column: "candidate_id_2", on_delete: :cascade
+  add_foreign_key "candidate_combinations", "elections", on_delete: :cascade
 end

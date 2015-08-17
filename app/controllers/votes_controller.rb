@@ -6,18 +6,22 @@ class VotesController < ApplicationController
 
   def create
     election = Election.find_by_id(params[:vote][:election_id])
-    candidate = Candidate.find_by_id(params[:vote][:candidate_id])
+    combination = CandidateCombination.find_by_id(params[:vote][:candidate_combination_id])
 
-    if election && candidate
-      vote = Vote.create(vote_params)
-      vote_summary = VoteSummary.find_by(election_id: election.id, candidate_id: candidate.id)
-      if vote_summary
-        vote_summary.increment!
-        vote_summary.save
-      else
-        VoteSummary.create(election_id: election.id, candidate_id: candidate.id, total_votes: 1)
+    if election && combination
+      candidate_id = params[:vote][:candidate_id]
+
+      candidate = Candidate.find_by_id(candidate_id) if candidate_id
+      user_combinations = UserCombinations.new(session_key)
+
+      if valid?(user_combinations, combination, candidate)
+        vote(election, candidate, Vote.create(vote_params))
       end
-      render json: { success: true }
+
+      user_combinations.save(combination.id, candidate_id)
+      next_combination = election.random_combination(user_combinations.list)
+
+      render json: next_combination.to_json(include: [:candidate_1, :candidate_2])
     else
       render json: { success: false }, status: :bad_request
     end
@@ -25,7 +29,26 @@ class VotesController < ApplicationController
 
   private
 
+  def valid?(user_combinations, combination, candidate)
+    candidate.present? && combination.has_candidate?(candidate.id) && !user_combinations.include?(combination.id)
+  end
+
+  def session_key
+    "combination_#{session[:session_id]}"
+  end
+
   def vote_params
     params.require(:vote).permit(:election_id, :candidate_id, :user_id)
+  end
+
+  def vote(election, candidate, vote)
+    vote_summary = VoteSummary.find_by(election_id: election.id, candidate_id: candidate.id)
+
+    if vote_summary
+      vote_summary.increment!
+      vote_summary.save
+    else
+      VoteSummary.create(election_id: election.id, candidate_id: candidate.id, total_votes: 1)
+    end
   end
 end
