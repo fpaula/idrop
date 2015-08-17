@@ -3,3 +3,6 @@ rvm:
   - 2.1.2
 script:
   - bundle exec rake spec
+before_install:
+  - cp config/database.yml.sample config/database.yml.sample
+  - mysql -e 'create database idrop_test;'

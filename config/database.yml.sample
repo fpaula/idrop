@@ -62,8 +62,7 @@ development:
 test:
   adapter: mysql2
   database: idrop_test
-  username: root
-  password: root
+  username: travis
   encoding: utf8
   pool: 5
 
