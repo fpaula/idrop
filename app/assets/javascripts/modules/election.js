@@ -78,8 +78,6 @@ fn._vote = function(candidateId) {
   var self = this,
      userId = 1;
 
-  console.log(candidateId);
-
   $.post('/votes', {
     'vote': {
       'election_id': self.electionId,
