@@ -1,27 +1,22 @@
-var Election = function(electionId, candidates) {
-  this.candidates = new Candidates(candidates);
-  this.combineCandidates();
+var Election = function(electionId) {
   this.electionId = electionId;
 
-  this.round = 0;
   this.votesCount = 0;
-  this.currentInLeft = 0;
-  this.currentInRight = 0;
 
   this.root = $('#election');
   this.leftPanel = this.root.find('#left');
   this.rightPanel = this.root.find('#right');
   this.nextButton = this.root.find('[data-next-candidates]');
   this.votesCounter = this.root.find('[data-votes-counter]');
+  this.combinationId = this.root.find('[data-combination]').attr('data-combination');
+
+  this.currentInLeft = this.leftPanel.find('[data-id]').attr('data-id');
+  this.currentInRight = this.rightPanel.find('[data-id]').attr('data-id');
 
   this._bindEvents();
 };
 
 var fn = Election.prototype;
-
-fn.start = function() {
-  this.nextCandidates();
-};
 
 fn.finish = function() {
   this.root.html('END OF GAME');
@@ -29,50 +24,40 @@ fn.finish = function() {
 
 fn._bindEvents = function() {
   var self = this;
-  this.nextButton.on('click', function() {
-    self.nextCandidates();
-  });
+  this.nextButton.on('click', self._skip.bind(self));
 
   this.root.find('[data-candidate-picture]').on('click', function() {
-    var candidateId = $(this).data('id'),
-        userId = 1;
-
-    self._vote(self.electionId, candidateId, userId);
+    var candidateId = $(this).attr('data-id');
+    self._vote(candidateId);
   });
 }
 
-fn.combineCandidates = function() {
-  var ids = this.candidates.ids();
-  this.combinations = ArrayToolBelt.combineAndShuffle(ids);
-};
+fn.nextCandidates = function(combination) {
+  if (combination.length > 0) {
+    var candidateLeft = combination.candidate_1;
+    var candidateRight = combination.candidate_2;
 
-fn.nextCandidates = function() {
-  var id1 = this.combinations[this.round][0],
-      id2 = this.combinations[this.round][1];
+    this.combinationId = combination.id;
 
-  // The fade effect must be applied only if the image changes
-  // between rounds
-  if (this.currentInLeft != id1) {
-    this._prepareCandidate(this.leftPanel, id1);
-  }
+    // The fade effect must be applied only if the image changes
+    // between rounds
+    if (this.currentInLeft != candidateLeft.id) {
+      this._prepareCandidate(this.leftPanel, candidateLeft);
+    }
 
-  if (this.currentInRight != id2) {
-    this._prepareCandidate(this.rightPanel, id2);
-  }
+    if (this.currentInRight != candidateRight.id) {
+      this._prepareCandidate(this.rightPanel, candidateRight);
+    }
 
-  this.currentInLeft = id1;
-  this.currentInRight = id2;
-
-  this.round += 1;
-
-  if (this.round == this.combinations.length) {
+    this.currentInLeft = candidateLeft.id;
+    this.currentInRight = candidateRight.id;
+  } else {
     this.finish();
   }
 };
 
-fn._prepareCandidate = function(panel, id) {
+fn._prepareCandidate = function(panel, candidate) {
   var self = this,
-      candidate = this.candidates.find(id),
       image = panel.find('[data-candidate-picture]'),
       subtitle = panel.find('[data-subtitle]'),
       mask = panel.find('[data-mask]');
@@ -80,36 +65,41 @@ fn._prepareCandidate = function(panel, id) {
   image.fadeOut(function() {
     image.css('background-image', 'url(' + candidate.image_url + ')');
     subtitle.text(candidate.name);
-    image.attr('data-id', id);
+    image.attr('data-id', candidate.id);
     image.fadeIn();
   });
 };
 
-fn._vote = function(election_id, candidate_id, user_id) {
- var self = this;
+fn._skip = function() {
+  this._vote();
+};
 
- $.post('/votes', {
+fn._vote = function(candidateId) {
+  var self = this,
+     userId = 1;
+
+  $.post('/votes', {
     'vote': {
-      'election_id': election_id,
-      'candidate_id': candidate_id,
-      'user_id': user_id
+      'election_id': self.electionId,
+      'candidate_id': candidateId,
+      'user_id': userId,
+      'candidate_combination_id': self.combinationId
     }
   })
-  .done(function(data) {
-    self._updateVotesCounter();
-    self.nextCandidates();
+  .done(function(combination) {
+    if (candidateId) {
+      self._updateVotesCounter();
+    }
+
+    self.nextCandidates(combination);
   })
   .fail(function(data) {
-    alert('Não foi possível incluir seu voto, tente novamente');
-    console.log(data);
+    alert('Ocorreu um erro inesperado, tente novamente mais tarde.');
   })
 };
 
 fn._updateVotesCounter = function() {
   this.votesCount += 1;
-  if (this.votesCount == 1) {
-    this.votesCounter.text('Você votou em 1 duelo');
-  } else {
-    this.votesCounter.text('Você votou em '+ this.votesCount + ' duelos');
-  }
+  var duelWord = this.votesCount === 1 ? 'duelo' : 'duelos';
+  this.votesCounter.text('Você votou em ' + this.votesCount + ' ' + duelWord);
 }

@@ -1,16 +1,19 @@
 <% position ||= 'left' %>
 <% effect = position == 'right' ? 'left_to_right' : 'right_to_left' %>
-<div id='<%= position %>' class='hover-effect candidate-panel'>
-  <div class="ih-item square effect13 <%= effect %>">
-    <a href="javascript:;">
-      <div class="img" data-<%= position %>-candidate data-candidate-picture data-id>
-      </div>
 
-      <div class="info">
-        <div class='circle-vote' data-mask>VOTE</div>
-      </div>
-    </a>
+<% if candidate %>
+  <div id='<%= position %>' class='hover-effect candidate-panel'>
+    <div class="ih-item square effect13 <%= effect %>">
+      <a href="javascript:;">
+        <div class="img" data-<%= position %>-candidate data-candidate-picture data-id='<%= candidate.id %>' style='background-image: url(<%= candidate.image_url %>)'>
+        </div>
+
+        <div class="info">
+          <div class='circle-vote' data-mask>VOTE</div>
+        </div>
+      </a>
+    </div>
+
+    <div class='subtitle' data-subtitle><%= candidate.name %></div>
   </div>
-
-  <div class='subtitle' data-subtitle></div>
-</div>
+<% end %>
