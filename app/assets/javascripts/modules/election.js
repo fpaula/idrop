@@ -33,7 +33,7 @@ fn._bindEvents = function() {
 }
 
 fn.nextCandidates = function(combination) {
-  if (combination.length > 0) {
+  if (combination) {
     var candidateLeft = combination.candidate_1;
     var candidateRight = combination.candidate_2;
 

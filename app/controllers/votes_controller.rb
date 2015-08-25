@@ -19,9 +19,8 @@ class VotesController < ApplicationController
       end
 
       user_combinations.save(combination.id, candidate_id)
-      next_combination = election.random_combination(user_combinations.list)
 
-      render json: next_combination.to_json(include: [:candidate_1, :candidate_2])
+      render json: CandidateCombination.next(election, user_combinations)
     else
       render json: { success: false }, status: :bad_request
     end

@@ -73,9 +73,9 @@ class Election < ActiveRecord::Base
       id = ids[index]
 
       # Returns the combination from the random index
-      combinations.find(id) || []
+      combinations.find_by(id: id)
     else
-      []
+      nil
     end
   end
 
