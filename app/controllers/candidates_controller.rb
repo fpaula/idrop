@@ -17,6 +17,7 @@ class CandidatesController < ApplicationController
     @candidate = Candidate.new
     @categories = Category.all.map{ |c| [c.name, c.id] }
     @category = @candidate.try(:categories).try(:first).try(:id)
+    @creative_commons = CreativeCommons.licenses.map { |version, url| [version, version] }
   end
 
   # GET /candidates/1/edit
@@ -80,10 +81,11 @@ class CandidatesController < ApplicationController
     def set_candidate
       @candidate = Candidate.find(params[:id])
       @categories = Category.all.map{ |c| [c.name, c.id] }
+      @creative_commons = CreativeCommons.licenses.map { |version, url| [version, version] }
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidate_params
-      params.require(:candidate).permit(:name, :status, :image_url)
+      params.require(:candidate).permit(:name, :status, :image_url, :image_original_title, :image_original_url, :image_author_name, :image_author_url, :image_license)
     end
 end

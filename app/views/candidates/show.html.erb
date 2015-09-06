@@ -19,6 +19,31 @@
   </p>
 
   <p>
+    <strong>Original image page:</strong>
+    <%= @candidate.image_original_url %>
+  </p>
+
+  <p>
+    <strong>Original image title:</strong>
+    <%= @candidate.image_original_title %>
+  </p>
+
+  <p>
+    <strong>Image Author:</strong>
+    <%= @candidate.image_author_name %>
+  </p>
+
+  <p>
+    <strong>Image Author Page:</strong>
+    <%= @candidate.image_author_url %>
+  </p>
+
+  <p>
+    <strong>License from Creative Commons (CC):</strong>
+    <%= @candidate.image_license %>
+  </p>
+
+  <p>
     <strong>Category:</strong>
     <%= @candidate.category.try(:name) %>
   </p>

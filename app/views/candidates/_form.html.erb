@@ -13,11 +13,7 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :image_url %><br>
-    <%= f.text_field :image_url %>
+    <%= f.text_field :name , size: 150%>
   </div>
   <div class="field">
     <%= f.label :status %><br>
@@ -27,6 +23,31 @@
     <%= f.label :category %><br>
     <%= select(:category, :category_id, @categories, prompt: "Select category...", selected: @candidate.category.try(:id)) %>
   </div>
+  <div class="field">
+    <%= f.label :image_url %><br>
+    <%= f.text_field :image_url, size: 150 %>
+  </div>
+  <div class="field">
+    <%= f.label "Original image page (with all the descriptions and rights for the image)" %><br>
+    <%= f.text_field :image_original_url, size: 150 %>
+  </div>
+  <div class="field">
+    <%= f.label "Original image title" %><br>
+    <%= f.text_field :image_original_title, size: 150 %>
+  </div>
+  <div class="field">
+    <%= f.label "Image author" %><br>
+    <%= f.text_field :image_author_name, size: 150 %>
+  </div>
+  <div class="field">
+    <%= f.label "Image author page" %><br>
+    <%= f.text_field :image_author_url, size: 150 %>
+  </div>
+  <div class="field">
+    <%= f.label "License CC (Creative Commons)" %><br>
+    <%= select(:candidate, :image_license, @creative_commons, prompt: "Select license...", selected: @candidate.image_license) %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

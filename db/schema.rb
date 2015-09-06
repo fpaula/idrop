@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150812140540) do
+ActiveRecord::Schema.define(version: 20150906141046) do
 
   create_table "candidate_combinations", force: :cascade do |t|
     t.integer "election_id",    limit: 4
@@ -24,12 +24,17 @@ ActiveRecord::Schema.define(version: 20150812140540) do
   add_index "candidate_combinations", ["election_id"], name: "index_candidate_combinations_election_id", using: :btree
 
   create_table "candidates", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.string   "nickname",   limit: 255
-    t.string   "image_url",  limit: 255
-    t.boolean  "status",     limit: 1,   default: true
-    t.datetime "created_at",                            null: false
-    t.datetime "updated_at",                            null: false
+    t.string   "name",                 limit: 255
+    t.string   "nickname",             limit: 255
+    t.string   "image_url",            limit: 255
+    t.boolean  "status",               limit: 1,   default: true
+    t.datetime "created_at",                                      null: false
+    t.datetime "updated_at",                                      null: false
+    t.string   "image_original_title", limit: 255
+    t.string   "image_original_url",   limit: 255
+    t.string   "image_author_name",    limit: 255
+    t.string   "image_author_url",     limit: 255
+    t.string   "image_license",        limit: 255
   end
 
   create_table "candidates_categories", force: :cascade do |t|
