@@ -15,5 +15,18 @@
     </div>
 
     <div class='subtitle' data-subtitle><%= candidate.name %></div>
+    <div class='attribution'>
+      <% if candidate.image_original_title %>
+        <%= link_to "\"#{candidate.image_original_title}\"", candidate.image_original_url %>
+      <% end %>
+
+      <% if candidate.image_author_url %>
+        by <%= link_to candidate.image_author_name, candidate.image_author_url %>
+      <% end %>
+
+      <% if candidate.image_license %>
+        is licensed under <%= link_to candidate.image_license, CreativeCommons.licenses[candidate.image_license] %>
+      <% end %>
+    </div>
   </div>
 <% end %>
