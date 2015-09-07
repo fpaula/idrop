@@ -32,6 +32,10 @@ gem 'friendly_id', '~> 5.1.0'
 
 gem 'redis-rails'
 
+# Image upload
+gem "refile", require: "refile/rails"
+gem "refile-mini_magick"
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :development, :test do

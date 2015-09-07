@@ -9,9 +9,15 @@
 
   <% if @candidate.image_url %>
     <p>
+      <strong>Original Image:</strong>
       <img src="<%= @candidate.image_url %>"/>
     </p>
   <% end %>
+
+  <p>
+    <strong>Modified Image:</strong>
+    <%= image_tag attachment_url(@candidate, :modified_image, format: "jpg") %>
+  </p>
 
   <p>
     <strong>Image url:</strong>

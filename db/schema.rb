@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150906141046) do
+ActiveRecord::Schema.define(version: 20150907144824) do
 
   create_table "candidate_combinations", force: :cascade do |t|
     t.integer "election_id",    limit: 4
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20150906141046) do
     t.string   "image_author_name",    limit: 255
     t.string   "image_author_url",     limit: 255
     t.string   "image_license",        limit: 255
+    t.string   "modified_image_id",    limit: 255
   end
 
   create_table "candidates_categories", force: :cascade do |t|

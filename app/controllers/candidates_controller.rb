@@ -86,6 +86,6 @@ class CandidatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def candidate_params
-      params.require(:candidate).permit(:name, :status, :image_url, :image_original_title, :image_original_url, :image_author_name, :image_author_url, :image_license)
+      params.require(:candidate).permit(:name, :status, :image_url, :image_original_title, :image_original_url, :image_author_name, :image_author_url, :image_license, :modified_image)
     end
 end

@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :category %><br>
-    <%= select(:category, :category_id, @categories, prompt: "Select category...", selected: @candidate.category.try(:id)) %>
+    <%= select(:category, :category_id, @categories, include_blank: "Select category...", selected: @candidate.category.try(:id)) %>
   </div>
   <div class="field">
     <%= f.label :image_url %><br>
@@ -45,8 +45,13 @@
   </div>
   <div class="field">
     <%= f.label "License CC (Creative Commons)" %><br>
-    <%= select(:candidate, :image_license, @creative_commons, prompt: "Select license...", selected: @candidate.image_license) %>
+    <%= select(:candidate, :image_license, @creative_commons, include_blank: "Select license...", selected: @candidate.image_license) %>
   </div>
+  <div class="field">
+    <%= f.label "Modified image" %><br>
+    <%= f.attachment_field :modified_image %>
+  </div>
+
 
   <div class="actions">
     <%= f.submit %>
