@@ -1,0 +1,10 @@
+<div class="container">
+
+<h1>Todas as Categorias</h1>
+<ul class="list-group">
+  <% @categories.each do |category| %>
+    <li class="list-group-item">
+      <%= link_to nested_category(category.id), category_path(category),'data-ga-event' => "All Categories,#{category.name}" %>
+    </li>
+  <% end %>
+</div>
