@@ -20,7 +20,9 @@ class VotesController < ApplicationController
 
       user_combinations.save(combination.id, candidate_id)
 
-      render json: CandidateCombination.next(election, user_combinations)
+      nextCombination = CandidateCombination.next(election, user_combinations)
+
+      render json: nextCombination
     else
       render json: { success: false }, status: :bad_request
     end

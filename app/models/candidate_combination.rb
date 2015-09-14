@@ -19,6 +19,7 @@ class CandidateCombination < ActiveRecord::Base
   #
   # Where `session_key` is a protected method from the ApplicationController
   def self.next(election, user_combinations)
-    election.random_combination(user_combinations.list).to_json(include: [:candidate_1, :candidate_2])
+    combination = election.random_combination(user_combinations.list) || []
+    combination.to_json(include: [:candidate_1, :candidate_2])
   end
 end
