@@ -4,7 +4,12 @@ class Admin::CandidatesController < ApplicationController
   # GET /candidates
   # GET /candidates.json
   def index
-    @candidates = Candidate.all
+    @candidates = params[:category_id].to_i > 0 ?
+      Candidate.joins(:categories).where(categories: { id: params[:category_id] }) :
+      Candidate.all
+
+    @categories = Category.all.map{ |c| [c.name, c.id] }
+    @current_category = params[:category_id]
   end
 
   # GET /candidates/1

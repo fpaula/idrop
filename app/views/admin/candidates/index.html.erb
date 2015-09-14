@@ -1,9 +1,21 @@
 <%= render partial: 'menu' %>
 
-<div class="container">
+<div class="container admin-container">
   <%= render partial: 'shared/notice_growl' %>
 
   <h1>Listing Candidates</h1>
+
+  <%= form_for(admin_categories_path, method: 'get') do |f| %>
+    <label>Filtro por categoria:</label>
+    <select class='form-control' id='category-filter' name='category_id' onchange='$(form).submit()'>
+      <option value='0'>Todas as categorias</option>
+      <% @categories.each do |category| %>
+        <option value='<%= category.last %>'<%= 'selected' if @current_category.to_i == category.last.to_i %> ><%= category.first %></option>
+      <% end %>
+    </select>
+  <% end %>
+  <br />
+  <hr />
 
   <table class="table table-striped">
     <thead>
@@ -22,7 +34,8 @@
           <td><%= candidate.name %></td>
           <td><%= candidate.status %></td>
           <td><%= candidate.category.try(:name) %></td>
-          <td><%= image_tag(candidate.image_url, width: '150px', height: '200px') %></td>
+
+          <td><%= image_tag(candidate.image_url, style: 'max-width: 150px; max-height: 200px') %></td>
 
           <td class='icon'>
             <%= link_to admin_candidate_path(candidate) do %>
