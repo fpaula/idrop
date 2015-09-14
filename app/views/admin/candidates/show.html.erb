@@ -1,6 +1,7 @@
-<div class="container">
+<%= render partial: 'menu' %>
 
-  <p id="notice"><%= notice %></p>
+<div class="container admin-container">
+  <%= render partial: 'shared/notice_growl' %>
 
   <p>
     <strong>Name:</strong>
@@ -59,6 +60,15 @@
     <%= @candidate.status %>
   </p>
 
-  <%= link_to 'Edit', edit_candidate_path(@candidate) %> |
-  <%= link_to 'Back', candidates_path %>
+  <%= link_to edit_admin_candidate_path(@candidate) do %>
+    <%= button_tag type: 'button', class: 'btn btn-default btn-white' do %>
+      <i class='fa fa-edit'></i> Edit
+    <% end %>
+  <% end %>
+
+  <%= link_to admin_candidates_path do %>
+    <%= button_tag type: 'button', class: 'btn btn-default btn-white' do %>
+      <i class='fa fa-mail-reply'></i> Go back
+    <% end %>
+  <% end %>
 </div>

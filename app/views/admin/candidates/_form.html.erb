@@ -1,4 +1,4 @@
-<%= form_for(@candidate) do |f| %>
+<%= form_for([:admin, @candidate]) do |f| %>
   <% if @candidate.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@candidate.errors.count, "error") %> prohibited this candidate from being saved:</h2>
@@ -52,8 +52,16 @@
     <%= f.attachment_field :modified_image %>
   </div>
 
+  <br />
+  <hr />
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-success' %>
+
+    <%= link_to admin_candidates_path do %>
+      <%= f.button type: 'button', class: 'btn btn-danger' do %>
+        <i class='fa fa-mail-reply'></i> Go back
+      <% end %>
+    <% end %>
   </div>
 <% end %>

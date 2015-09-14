@@ -13,7 +13,12 @@
   </li>
   <li role="presentation" <%= 'class=active' if active == 'elections' %>>
     <%= link_to admin_elections_path do %>
-      <i class='fa fa-group'></i> Elections
+      <i class='fa fa-sitemap'></i> Elections
+    <% end %>
+  </li>
+  <li role="presentation" <%= 'class=active' if active == 'candidates' %>>
+    <%= link_to admin_candidates_path do %>
+      <i class='fa fa-group'></i> Candidates
     <% end %>
   </li>
 </ul>
