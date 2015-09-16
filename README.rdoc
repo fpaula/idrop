@@ -5,3 +5,20 @@
 heroku pg:reset DATABASE
 heroku run rake db:migrate
 heroku run rake db:seed
+
+
+== DOCKER
+
+* In the first time you are going to use docker to run epicvotes, run `docker-compose build`
+
+To start the containers, run:
+
+- docker-compose up
+
+To run commands on the containers, run:
+
+- docker-compose run <container> <command>
+
+* The <container> must be replaced with the key used on docker-compose.yml to indentify each container.
+
+
