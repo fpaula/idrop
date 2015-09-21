@@ -4,6 +4,7 @@ var Election = function(electionId) {
   this.votesCount = 0;
 
   this.root = $('#election');
+  this.finishedElection = $('[data-finished-election]');
   this.leftPanel = this.root.find('#left');
   this.rightPanel = this.root.find('#right');
   this.nextButton = this.root.find('[data-next-candidates]');
@@ -19,7 +20,10 @@ var Election = function(electionId) {
 var fn = Election.prototype;
 
 fn.finish = function() {
-  this.root.html('END OF GAME');
+  var self = this;
+  this.root.fadeOut(function() {
+    self.finishedElection.fadeIn('slow');
+  });
 };
 
 fn._bindEvents = function() {
