@@ -1,4 +1,4 @@
-class Admin::ElectionsController < ApplicationController
+class Admin::ElectionsController < Admin::AdminController
   before_action :set_election, only: [:show, :edit, :update, :destroy]
   before_action :set_elections, only: [:index, :show, :new, :edit, :update]
   before_action :set_categories, only: [:edit, :new]
