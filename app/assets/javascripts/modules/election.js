@@ -28,15 +28,24 @@ fn.finish = function() {
 
 fn._bindEvents = function() {
   var self = this;
+
+  // Avoid freak clicks
+  this.root.data('click-enabled', true);
+
   this.nextButton.on('click', self._skip.bind(self));
 
   this.root.find('[data-candidate-picture]').on('click', function() {
-    var candidateId = $(this).attr('data-id');
-    self._vote(candidateId);
+    if (self.root.data('click-enabled')) {
+      self.root.data('click-enabled', false);
+
+      self._vote($(this).attr('data-id'), function() {
+        self.root.data('click-enabled', true);
+      });
+    }
   });
 }
 
-fn.nextCandidates = function(combination) {
+fn.nextCandidates = function(combination, callback) {
   if (combination) {
     var candidateLeft = combination.candidate_1;
     var candidateRight = combination.candidate_2;
@@ -46,11 +55,11 @@ fn.nextCandidates = function(combination) {
     // The fade effect must be applied only if the image changes
     // between rounds
     if (this.currentInLeft != candidateLeft.id) {
-      this._prepareCandidate(this.leftPanel, candidateLeft);
+      this._prepareCandidate(this.leftPanel, candidateLeft, callback);
     }
 
     if (this.currentInRight != candidateRight.id) {
-      this._prepareCandidate(this.rightPanel, candidateRight);
+      this._prepareCandidate(this.rightPanel, candidateRight, callback);
     }
 
     this.currentInLeft = candidateLeft.id;
@@ -60,7 +69,7 @@ fn.nextCandidates = function(combination) {
   }
 };
 
-fn._prepareCandidate = function(panel, candidate) {
+fn._prepareCandidate = function(panel, candidate, callback) {
   var self = this,
       image = panel.find('[data-candidate-picture]'),
       subtitle = panel.find('[data-subtitle]'),
@@ -70,7 +79,9 @@ fn._prepareCandidate = function(panel, candidate) {
     image.css('background-image', 'url(' + candidate.image_url + ')');
     subtitle.text(candidate.name);
     image.attr('data-id', candidate.id);
-    image.fadeIn();
+    image.fadeIn(function() {
+      try { callback() } catch(e) {};
+    });
   });
 };
 
@@ -78,7 +89,7 @@ fn._skip = function() {
   this._vote();
 };
 
-fn._vote = function(candidateId) {
+fn._vote = function(candidateId, callback) {
   var self = this,
      userId = 1;
 
@@ -95,7 +106,7 @@ fn._vote = function(candidateId) {
       self._updateVotesCounter();
     }
 
-    self.nextCandidates(combination);
+    self.nextCandidates(combination, callback);
   })
   .fail(function(data) {
     alert('Ocorreu um erro inesperado, tente novamente mais tarde.');
