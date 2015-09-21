@@ -1,4 +1,4 @@
-class Admin::CandidatesController < ApplicationController
+class Admin::CandidatesController < Admin::AdminController
   before_action :set_candidate, only: [:show, :edit, :update, :destroy]
 
   # GET /candidates

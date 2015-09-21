@@ -21,4 +21,6 @@ To run commands on the containers, run:
 
 * The <container> must be replaced with the key used on docker-compose.yml to indentify each container.
 
+== CREATING ADMIN USER
 
+* AdminUser.create(email: "teste@teste.com", password: "12345678", password_confirmation: "12345678")
