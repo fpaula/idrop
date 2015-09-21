@@ -8,6 +8,17 @@ class Election < ActiveRecord::Base
 
   after_create :update_slug, :combine_candidates
 
+  # TODO return true if the election is running
+  def active?
+    true
+  end
+
+  # TODO call this method to close an election
+  # It will also clean the combinations table
+  def self.close(election_id)
+    CandidateCombination.delete_all(election_id: election_id)
+  end
+
   def candidates
     @candidates ||= begin
       Rails.cache.fetch("candidates_for_election_#{id}") do
@@ -72,7 +83,10 @@ class Election < ActiveRecord::Base
       # Gets the id of the combination
       id = ids[index]
 
-      # Returns the combination from the random index
+      # Returns the combination from the random index.
+      # If there are no entries in the database (for example, if a new candidate is created and
+      # the process deleted all combinations, but didn't create new ones yet), the election
+      # will end prematurely
       combinations.find_by(id: id)
     else
       nil
