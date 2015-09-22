@@ -5,5 +5,6 @@ class ElectionsController < ApplicationController
 
   def show
     @election = Election.friendly.find(params[:id])
+    @user_combinations = UserCombinations.new(session_key)
   end
 end

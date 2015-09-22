@@ -28,10 +28,10 @@ RSpec.describe VotesController, type: :controller do
       expect(response.status).to eq(400)
     end
 
-    it 'returns an empty array of combinations when the election is over' do
+    it 'returns null when the election is over' do
       post :create, vote: { election_id: election.id, candidate_combination_id: combination.id }
 
-      expect(JSON.parse(response.body)).to eq([])
+      expect(response.body).to eq('null')
     end
 
     it 'returns the next combination' do

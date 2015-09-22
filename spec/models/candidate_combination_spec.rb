@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Election do
+describe CandidateCombination do
   let(:category) { FactoryGirl.create(:category, id: 1, name: 'Portugueses') }
   let(:election) { FactoryGirl.create(:election, id: 1, category: category, title: 'Os melhores nomes porgueses') }
 
@@ -17,7 +17,7 @@ describe Election do
       ]
 
       allow(election).to receive(:candidates) { [joaquim, manuel, francisco] }
-      expect(election.combine_candidates).to eq(expected_result)
+      expect(CandidateCombination.combine(election)).to eq(expected_result)
     end
   end
 end

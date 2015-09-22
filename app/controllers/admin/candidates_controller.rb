@@ -33,13 +33,10 @@ class Admin::CandidatesController < Admin::AdminController
 
     respond_to do |format|
       if @candidate.save
-        if category = Category.find(params['category']['category_id'])
-          @candidate.categories << category
-        else
-          @candidate.categories.delete_all
-        end
+        set_candidate_categories
+        CandidateCombination.recombine_candidates(category)
 
-        format.html { redirect_to @candidate, notice: 'Candidate was successfully created.' }
+        format.html { redirect_to [:admin, @candidate], notice: 'Candidate was successfully created.' }
         format.json { render :show, status: :created, location: @candidate }
       else
         format.html { render :new }
@@ -53,13 +50,9 @@ class Admin::CandidatesController < Admin::AdminController
   def update
     respond_to do |format|
       if @candidate.update(candidate_params)
-        if category = Category.find(params['category']['category_id'])
-          @candidate.categories << category
-        else
-          @candidate.categories.delete_all
-        end
+        set_candidate_categories
 
-        format.html { redirect_to @candidate, notice: 'Candidate was successfully updated.' }
+        format.html { redirect_to [:admin, @candidate], notice: 'Candidate was successfully updated.' }
         format.json { render :show, status: :ok, location: @candidate }
       else
         format.html { render :edit }
@@ -71,7 +64,10 @@ class Admin::CandidatesController < Admin::AdminController
   # DELETE /candidates/1
   # DELETE /candidates/1.json
   def destroy
+    category = @candidate.category
     @candidate.destroy
+    CandidateCombination.recombine_candidates(category)
+
     respond_to do |format|
       format.html { redirect_to candidates_url, notice: 'Candidate was successfully destroyed.' }
       format.json { head :no_content }
@@ -90,5 +86,13 @@ class Admin::CandidatesController < Admin::AdminController
   # Never trust parameters from the scary internet, only allow the white list through.
   def candidate_params
     params.require(:candidate).permit(:name, :status, :image_url, :image_original_title, :image_original_url, :image_author_name, :image_author_url, :image_license, :modified_image)
+  end
+
+  def set_candidate_categories
+    if category = Category.find(params['category']['category_id'])
+      @candidate.categories << category
+    else
+      @candidate.categories.delete_all
+    end
   end
 end

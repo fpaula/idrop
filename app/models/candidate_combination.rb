@@ -19,7 +19,56 @@ class CandidateCombination < ActiveRecord::Base
   #
   # Where `session_key` is a protected method from the ApplicationController
   def self.next(election, user_combinations)
-    combination = election.random_combination(user_combinations.list) || []
-    combination.to_json(include: [:candidate_1, :candidate_2])
+    combination = random_combination(election, user_combinations.list)
+    combination ? combination.to_json(include: [:candidate_1, :candidate_2]) : nil
+  end
+
+  # Public: create entries in the table candidate_combinations with all combinations
+  # of candidates, without repetition. Be aware that, for the sake of this algorithm,
+  # [1, 2] is the same as [2, 1] and, thus, one combination will not enter the list.
+  #
+  # Returns: list of combinations
+  def self.combine(election)
+    size = election.candidates.length
+    result = []
+
+    0.upto(size - 2).each do |i|
+      (i + 1).upto(size - 1).each do |j|
+        combination = CandidateCombination.create(election_id: election.id,
+          candidate_1: election.candidates[i], candidate_2: election.candidates[j])
+
+        result << [combination.candidate_1.id, combination.candidate_2.id]
+      end
+    end
+
+    result
+  end
+
+  def self.random_combination(election, exception_list = [])
+    # Remove from the array of ids those that were already used
+    ids = election.combinations.map(&:id) - exception_list
+
+    if ids.length > 0
+      # Picks a randon position in the list of valid id's
+      index = rand(0..ids.length - 1)
+
+      # Gets the id of the combination
+      id = ids[index]
+
+      # Returns the combination from the random index.
+      # If there are no entries in the database (for example, if a new candidate is created and
+      # the process deleted all combinations, but didn't create new ones yet), the election
+      # will end prematurely
+      election.combinations.find_by(id: id)
+    else
+      nil
+    end
+  end
+
+  def self.recombine_candidates(category)
+    category.active_elections.each do |election|
+      CandidateCombination.delete_all(election_id: election.id)
+      combine(election)
+    end
   end
 end
