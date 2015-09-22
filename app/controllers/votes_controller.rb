@@ -12,7 +12,6 @@ class VotesController < ApplicationController
       candidate_id = params[:vote][:candidate_id]
 
       candidate = Candidate.find_by_id(candidate_id) if candidate_id
-      user_combinations = UserCombinations.new(session_key)
 
       if valid?(user_combinations, combination, candidate)
         vote(election, candidate, Vote.create(vote_params))
@@ -30,12 +29,12 @@ class VotesController < ApplicationController
 
   private
 
-  def valid?(user_combinations, combination, candidate)
-    candidate.present? && combination.has_candidate?(candidate.id) && !user_combinations.include?(combination.id)
+  def user_combinations
+    @user_combinations ||= UserCombinations.new(session_key)
   end
 
-  def session_key
-    "combination_#{session[:session_id]}"
+  def valid?(user_combinations, combination, candidate)
+    candidate.present? && combination.has_candidate?(candidate.id) && !user_combinations.include?(combination.id)
   end
 
   def vote_params

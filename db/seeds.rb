@@ -109,7 +109,8 @@ Candidate.create( name: "CL", nickname: "CL", image_url: "http://images.au.kpops
 Candidate.create( name: "Park bom", nickname: "Park bom", image_url: "http://images5.fanpop.com/image/photos/32000000/Park-Bom-yg-k-pop-battle-of-the-bands-32023652-1280-936.jpg", categories:[categoria])
 Candidate.create( name: "Minzy", nickname: "Minzy", image_url: "http://img.ohkpop.com/2013/05/09/BP85GC67.jpg", categories:[categoria])
 
-Election.create(title: 'Qual é a melhor cantora de Kpop?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
+election = Election.create(title: 'Qual é a melhor cantora de Kpop?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
+CandidateCombination.combine(election)
 
 categoria = Category.create(name: 'Kpop - Masculino', parent_id: artista.id)
 Candidate.create( name: "Siwon", nickname: "Siwon", image_url: "https://s-media-cache-ak0.pinimg.com/236x/cd/f4/07/cdf40798a623b41163f80f2c777c7115.jpg", categories:[categoria])
@@ -142,7 +143,8 @@ Candidate.create( name: "P.o", nickname: "P.o", image_url: "http://img.ohkpop.co
 Candidate.create( name: "Youngjae", nickname: "Youngjae", image_url: "https://s-media-cache-ak0.pinimg.com/236x/26/69/d3/2669d32992115748201a7aaafb608e3a.jpg", categories:[categoria])
 Candidate.create( name: "Jaejoong", nickname: "Jaejoong", image_url: "http://images6.fanpop.com/image/photos/35800000/JYJ-Jaejoong-kpop-vocalist-35895959-620-413.jpg", categories:[categoria])
 
-Election.create(title: 'Qual é o melhor cantor de Kpop?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
+election = Election.create(title: 'Qual é o melhor cantor de Kpop?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
+CandidateCombination.combine(election)
 
 esporte = Category.create(name: 'Esporte')
 
@@ -188,7 +190,8 @@ Candidate.create( name: "Sport Club do Recife", nickname: "Sport", image_url: "h
 Candidate.create( name: "Club de Regatas Vasco da Gama", nickname: "Vasco", image_url: "http://aimore.org/escudos/Vasco.jpg", categories:[categoria])
 Candidate.create( name: "Esporte Clube Vitória", nickname: "Vitória", image_url: "http://aimore.org/escudos/Vitoria.jpg", categories:[categoria])
 
-Election.create(title: 'Qual é o melhor time do Brasil?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
+election = Election.create(title: 'Qual é o melhor time do Brasil?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
+CandidateCombination.combine(election)
 
 categoria = Category.create(name: 'Anime')
 Candidate.create( name: "Nisekoi 2", nickname: "Nisekoi 2", image_url: "http://www.animexis.com.br/wp-content/uploads/2015/03/Nisekoi-2nd-season-visual-322x450.jpg?266208", categories:[categoria])
@@ -242,4 +245,5 @@ Candidate.create( name: "Pokémon", nickname: "Pokémon", image_url: "http://3.b
 Candidate.create( name: "YU-GI-OH", nickname: "YU-GI-OH", image_url: "http://1.bp.blogspot.com/-QinMRDmRiOU/Ux_U1HeButI/AAAAAAAAAgU/fGDTpR9AiRQ/s1600/classic_1_wallpaper_1280x800+(1).jpg", categories:[categoria])
 Candidate.create( name: "Inuyasha", nickname: "Inuyasha", image_url: "http://4.bp.blogspot.com/-NVYmCoCQ46I/UyBf8VcAMDI/AAAAAAAAAiI/4Rrlgrp-yQo/s1600/InuYasha.(Character).full.1230954.jpg", categories:[categoria])
 
-Election.create(title: 'Qual é o melhor anime?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
+election = Election.create(title: 'Qual é o melhor anime?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
+CandidateCombination.combine(election)

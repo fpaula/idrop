@@ -1,3 +1,4 @@
-<div style='display:none' data-finished-election>
+<% display = !!show ? 'block' : 'none' %>
+<div style='display:<%= display %>' data-finished-election>
   <%= image_tag 'finished', class: 'finished-election' %>
 </div>
