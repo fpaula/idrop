@@ -1,4 +1,28 @@
-var Election = function(electionId) {
+var app = angular.module('epicvotes', []);
+
+app.controller('ElectionController', function($scope, $http) {
+  this.combination = null;
+  this.has_combination = false;
+
+  this.retrieveCombination = function() {
+    var response = $http.get('/election/7/combination');
+    var self = this;
+
+    response.success(function(data, status, headers, config){
+      console.log(data);
+      self.combination = data;
+      self.has_combination = true;
+    });
+
+    response.error(function(data, status, headers, config){
+      console.log('fronhou');
+    });
+  };
+
+  this.retrieveCombination();
+});
+
+/*var Election = function(electionId) {
   this.electionId = electionId;
 
   this.votesCount = 0;
@@ -107,3 +131,4 @@ fn._updateVotesCounter = function() {
   var duelWord = this.votesCount === 1 ? 'duelo' : 'duelos';
   this.votesCounter.text('Você votou em ' + this.votesCount + ' ' + duelWord);
 }
+*/

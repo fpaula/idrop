@@ -1,0 +1,43 @@
+<% position ||= 'left' %>
+<% effect = position == 'right' ? 'left_to_right' : 'right_to_left' %>
+<%
+  if candidate.modified_image.present?
+    image = attachment_url(candidate, :modified_image)
+  else
+    image = candidate.image_url
+  end
+%>
+
+<% if candidate %>
+  <div id='<%= position %>' class='hover-effect candidate-panel'>
+    <div class="ih-item square effect13 <%= effect %>">
+      <a href="javascript:;">
+        <div class="img" data-<%= position %>-candidate data-candidate-picture data-id='<%= candidate.id %>' style='background-image: url(<%= image %>)'>
+        </div>
+
+        <div class="info">
+          <div class='circle-vote' data-mask>VOTE</div>
+        </div>
+      </a>
+    </div>
+
+    <div class='subtitle' data-subtitle><%= candidate.name %></div>
+    <div class='attribution'>
+      <% if candidate.image_original_title %>
+        <%= link_to "\"#{candidate.image_original_title}\"", candidate.image_original_url %>
+      <% end %>
+
+      <% if candidate.image_author_url %>
+        by <%= link_to candidate.image_author_name, candidate.image_author_url %>
+      <% end %>
+
+      <% if candidate.image_license %>
+        is licensed under <%= link_to candidate.image_license, CreativeCommons.licenses[candidate.image_license] %>
+      <% end %>
+
+      <% if candidate.modified_image %>
+        <%= " - Cropped from Original" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
