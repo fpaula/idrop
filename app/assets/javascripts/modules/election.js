@@ -5,7 +5,7 @@ app.controller('ElectionController', function($scope, $http) {
   this.has_combination = false;
 
   this.retrieveCombination = function() {
-    var response = $http.get('/election/7/combination');
+    var response = $http.get('/election/7.json');
     var self = this;
 
     response.success(function(data, status, headers, config){
