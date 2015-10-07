@@ -1,0 +1,68 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import 'font-awesome';
+ @import 'select2';
+ @import 'morris';
+
+ body {
+  font-family: 'helvetica';
+ }
+
+.navbar-inverse {
+  background-color: #d3d3d3;
+  border: none;
+  box-shadow: 0 0px 5px #888888;
+}
+
+#logo {
+  height: 35px;
+  width: 170px;
+  margin-top: 7px;
+  background-color: #5f5f5f;
+  text-align: center;
+  padding-top: 9px;
+}
+
+#logo a, #logo a:hover {
+  color: #fff;
+  font-size: 22px;
+  text-decoration: none;
+  background-color: #5f5f5f;
+}
+
+.election-header {
+   margin-top: -5px;
+   margin-bottom: 20px;
+}
+
+.footer {
+  background-color: #616161;
+  color: #fff;
+  text-align: center;
+}
+
+.navbar-inverse .navbar-nav.header_menu li a {
+  color: #5f5f5f;
+}
+
+.navbar-toggle .icon-bar {
+  background-color: #5f5f5f !important;
+}
+
+footer p {
+  font-size: 16px;
+}

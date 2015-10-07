@@ -1,0 +1,17 @@
+<div class="mdl-card" id='card-<%= election.id %>'>
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text"><%= election.category.name %></h2>
+  </div>
+  <div class="mdl-card__media">
+  </div>
+  <div class="mdl-card__actions">
+    <a href="#"><%= humanize_votes election.total_votes %></a>
+  </div>
+</div>
+
+<style>
+  #card-<%= election.id %> .mdl-card__media {
+    height: 15em;
+    background: url(<%= election.image_url %>) center / cover;
+  }
+</style>

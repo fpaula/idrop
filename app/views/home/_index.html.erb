@@ -1,0 +1,66 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-1"></div>
+
+    <div class="col-md-10">
+      <div class="row carousel-holder">
+        <div class="col-md-12">
+          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner">
+              <% @carousel.each_with_index do |category, index| %>
+                <div class="item<%= " active" if index.zero? %>" style="text-align: center">
+                  <img class="slide-image" src="<%= category.image_url %>" alt=""/>
+                </div>
+              <% end %>
+            </div>
+
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev" data-ga-event='Home, Carousel - esquerda'>
+                <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next" data-ga-event='Home, Carousel - direita'>
+                <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="teste">Mais Recentes</h3>
+      <hr />
+
+      <% @elections.each_slice(3) do |slice| %>
+        <div class="row">
+          <% slice.each do |election| %>
+            <div class="col-sm-4 col-lg-4 col-md-4">
+              <div class="thumbnail">
+                <img src="<%= election.image_url %>" alt="" />
+
+                <div class="caption">
+                  <h4 class="pull-right"></h4>
+                  <% category_name = election.category.name.gsub(',', '') %>
+
+                  <h4>
+                    <%= link_to election.category.name, category_path(election.category),
+                          'data-ga-event' => "Home, Link do duelo, #{category_name}" %>
+                  </h4>
+
+                  <p>
+                    <%= link_to election.title, election_path(election),
+                          'data-ga-event' => "Home, Descrição do duelo, #{category_name}" %>
+                  </p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-1"></div>
+  </div>
+</div>

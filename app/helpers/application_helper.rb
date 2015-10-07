@@ -17,4 +17,9 @@ module ApplicationHelper
     end
     result
   end
+
+  def humanize_votes(votes = 0)
+    votes = 0 if votes.nil?
+    number_with_delimiter(votes, delimiter: '.') + (votes == 1 ? ' voto': ' votos')
+  end
 end
