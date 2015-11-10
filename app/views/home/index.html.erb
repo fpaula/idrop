@@ -42,7 +42,7 @@
           <% slice.each do |election| %>
             <div class="col-sm-4 col-lg-4 col-md-4">
               <div class="thumbnail">
-                <img src="<%= election.image_url %>" alt="" />
+                <%= link_to(image_tag(election.image_url), election_path(election))%>
 
                 <div class="caption">
                   <h4 class="pull-right"></h4>
