@@ -3,7 +3,11 @@
     <div class="col-md-1"></div>
 
     <div class="col-md-10">
-      <div class="row carousel-holder">
+      <div class="row">
+        <h3><%= link_to 'Qual melhor série?', '/election/qual-e-a-melhor-serie' %></h3>
+        <%= link_to(image_tag("http://cdn.x2n.com.br/~filmesse/wp-content/uploads/2015/05/the-walking-dead-6a-temporada-dublado.jpg", class: 'main-image'), '/election/qual-e-a-melhor-serie')%>
+      </div>
+      <!-- <div class="row carousel-holder">
         <div class="col-md-12">
           <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -28,9 +32,9 @@
             </a>
           </div>
         </div>
-      </div>
+      </div> -->
 
-      <h3 class="teste">Mais Recentes</h3>
+      <h3>Mais Recentes</h3>
       <hr />
 
       <% @elections.each_slice(3) do |slice| %>
@@ -45,7 +49,7 @@
                   <% category_name = election.category.name.gsub(',', '') %>
 
                   <h4>
-                    <%= link_to election.category.name, category_path(election.category),
+                    <%= link_to election.category.name, election_path(election),
                           'data-ga-event' => "Home, Link do duelo, #{category_name}" %>
                   </h4>
 
