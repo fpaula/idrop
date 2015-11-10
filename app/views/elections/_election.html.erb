@@ -20,29 +20,34 @@
 
   <% if combination %>
     <div class='row' id='election'>
-      <div class='col-md-1'></div>
-      <div class='col-md-10'>
+      <div class='col-lg-4 col-lg-offset-1 candidate'>
         <section id='versus' data-combination='<%= combination.id %>'>
           <%= render partial: 'elections/candidate_panel',
             locals: {
               position: 'left',
               candidate: combination.candidate_1
             } %>
-
-          <div id='center'> X </div>
-
+        </section>
+      </div>
+      <div class='col-lg-2 text-center vs-container'>
+        <div id='center'> X </div>
+      </div>
+      <div class='col-lg-4 candidate'>
+        <section id='versus' data-combination='<%= combination.id %>'>
           <%= render partial: 'elections/candidate_panel',
             locals: {
               position: 'right',
               candidate: combination.candidate_2
             } %>
-
-          <div id='bottom'>
-            <button data-next-candidates id='next-candidates' data-ga-event='Election, Pular esse duelo'>Pular esse duelo</button>
-            <div data-votes-counter>Você ainda não votou</div>
-          </div>
-        </section>
-      <div class='col-md-1'></div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-sm-12 text-center'>
+        <div id='bottom'>
+          <button data-next-candidates id='next-candidates' data-ga-event='Election, Pular esse duelo'>Pular esse duelo</button>
+          <div data-votes-counter>Você ainda não votou</div>
+        </div>
+      </div>
     </div>
   <% end %>
 </div>

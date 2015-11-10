@@ -284,3 +284,58 @@
   margin: 20px auto 40px;
   width: 70%;
 }
+
+@include tablet-portrait-and-below {
+  .vs-container {
+    padding: 10px;
+  }
+
+  #versus {
+    width: 100%;
+
+    .subtitle {
+      width: 100%;
+      line-height: 0;
+      border-radius: 0;
+      text-align: center;
+    }
+  }
+
+  .candidate {
+    margin: 0;
+    padding: 0;
+    height: 220px;
+  }
+
+  .candidate-panel {
+    margin: 0;
+    width: 100%;
+    border-radius: 0;
+    border-top: 2px solid #616161;
+
+    .circle-vote {
+      top: 60px;
+      left: 0;
+    }
+
+    .img {
+      width: 100%;
+      height: 220px;
+      border-radius: 0;
+    }
+  }
+
+  .ih-item.square.effect13.right_to_left .info,
+  .ih-item.square.effect13.left_to_right .info {
+    display: none;
+  }
+
+  #election #center {
+    height: 30px;
+    font-size: 30px;
+    padding-top: 7px;
+    float: left;
+    width: 100%;
+    margin-right: 0;
+  }
+}
