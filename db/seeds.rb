@@ -247,4 +247,6 @@ Candidate.create( name: "Inuyasha", nickname: "Inuyasha", image_url: "http://4.b
 
 election = Election.create(title: 'Qual é o melhor anime?', start_date: 1.day.ago, finish_date: 1.year.from_now, status: '1', category: categoria)
 
-CandidateCombination.recombine_candidates
+Category.all.each do |category|
+ CandidateCombination.recombine_candidates category
+end
