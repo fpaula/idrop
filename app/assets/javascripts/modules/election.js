@@ -8,8 +8,8 @@ var Election = function(electionId) {
   this.leftPanel = this.root.find('#left');
   this.rightPanel = this.root.find('#right');
   this.nextButton = $('[data-next-candidates]');
-  this.votesCounter = this.root.find('[data-votes-counter]');
-  this.combinationId = this.root.find('[data-combination]').attr('data-combination');
+  this.votesCounter = $('[data-votes-counter]');
+  this.combinationId = this.root.find('[data-combination]').data('combination');
 
   this.currentInLeft = this.leftPanel.find('[data-id]').attr('data-id');
   this.currentInRight = this.rightPanel.find('[data-id]').attr('data-id');
