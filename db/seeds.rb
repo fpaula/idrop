@@ -1,3 +1,6 @@
+#Cria admin default
+AdminUser.create(email: "teste@teste.com", password: "12345678")
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
