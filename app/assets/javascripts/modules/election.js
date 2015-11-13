@@ -79,6 +79,7 @@ fn._prepareCandidate = function(panel, candidate, callback) {
     image.css('background-image', 'url(' + candidate.image_url + ')');
     subtitle.text(candidate.name);
     image.attr('data-id', candidate.id);
+    self._updateCredits(panel, candidate);
     image.fadeIn(function() {
       try { callback() } catch(e) {};
     });
@@ -117,4 +118,33 @@ fn._updateVotesCounter = function() {
   this.votesCount += 1;
   var duelWord = this.votesCount === 1 ? 'duelo' : 'duelos';
   this.votesCounter.text('Você votou em ' + this.votesCount + ' ' + duelWord);
-}
+};
+
+fn._updateCredits = function(panel, candidate) {
+  if(candidate.image_license != null) {
+    var attribution = panel.find('.attribution').html(''),
+        origin = '',
+        author = '',
+        image_license = '',
+        modified_image = '',
+        cc = candidate.image_license.split(' ');
+
+    if(candidate.image_original_title != null) {
+      origin = $('<a>').attr('href', candidate.image_original_url).text(candidate.image_original_title).prop('outerHTML');
+    }
+
+    if(candidate.image_author_name != null) {
+      author = '<br /> by ' + $('<a>').attr('href', candidate.image_author_url).text(candidate.image_author_name).prop('outerHTML');
+    }
+
+    if(candidate.image_license != null) {
+      image_license = '<br /> is licensed under ' + $('<a>').attr('href', "http://creativecommons.org/licenses/" + cc[1].toLowerCase() + "/" + cc[2] + "/").text(candidate.image_license).prop('outerHTML');
+    }
+
+    if(cacdidate.modified_image_id != null) {
+      modified_image = '<br /> Croped from original';
+    }
+
+    attribution.append(origin).append(author).append(image_license).append(modified_image);
+  }
+};
