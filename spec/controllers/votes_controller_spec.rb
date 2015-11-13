@@ -62,6 +62,7 @@ RSpec.describe VotesController, type: :controller do
       expect(user_combinations.list).to eq([combination.id])
 
       post :create, vote: { election_id: election.id, candidate_combination_id: new_combination.id, candidate_id: yuyuhakusho.id }
+      user_combinations = UserCombinations.new(controller.send(:session_key))
       expect(user_combinations.list).to eq([combination.id, new_combination.id])
     end
 
