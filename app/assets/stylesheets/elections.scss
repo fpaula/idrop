@@ -339,3 +339,11 @@
     margin-right: 0;
   }
 }
+
+.finished {
+  background-image: image-url('finished.png');
+  background-size: 761px 255px;
+  width: 761px;
+  height: 255px;
+  margin: 25px auto;
+}
