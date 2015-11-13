@@ -121,7 +121,9 @@ fn._updateVotesCounter = function() {
 };
 
 fn._updateCredits = function(panel, candidate) {
-  if(candidate.image_license != null) {
+  if(candidate.image_license == null) {
+    panel.find('.attribution').html('');
+  } else {
     var attribution = panel.find('.attribution').html(''),
         origin = '',
         author = '',
@@ -134,15 +136,15 @@ fn._updateCredits = function(panel, candidate) {
     }
 
     if(candidate.image_author_name != null) {
-      author = '<br /> by ' + $('<a>').attr('href', candidate.image_author_url).text(candidate.image_author_name).prop('outerHTML');
+      author = ' by ' + $('<a>').attr('href', candidate.image_author_url).text(candidate.image_author_name).prop('outerHTML');
     }
 
     if(candidate.image_license != null) {
-      image_license = '<br /> is licensed under ' + $('<a>').attr('href', "http://creativecommons.org/licenses/" + cc[1].toLowerCase() + "/" + cc[2] + "/").text(candidate.image_license).prop('outerHTML');
+      image_license = ' is licensed under ' + $('<a>').attr('href', "http://creativecommons.org/licenses/" + cc[1].toLowerCase() + "/" + cc[2] + "/").text(candidate.image_license).prop('outerHTML');
     }
 
-    if(cacdidate.modified_image_id != null) {
-      modified_image = '<br /> Croped from original';
+    if(candidate.modified_image_id != null) {
+      modified_image = ' Croped from original';
     }
 
     attribution.append(origin).append(author).append(image_license).append(modified_image);
