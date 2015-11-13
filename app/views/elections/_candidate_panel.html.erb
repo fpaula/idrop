@@ -32,7 +32,7 @@
       <% end %>
 
       <% if candidate.image_license %>
-        is licensed under <%= link_to candidate.image_license, CreativeCommons.license_url(candidate.image_license) %>
+        is licensed under <%= link_to candidate.image_license, CreativeCommons.licenses[candidate.image_license] %>
       <% end %>
 
       <% if candidate.modified_image %>
