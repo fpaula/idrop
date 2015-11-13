@@ -4,7 +4,7 @@
 <ul class="list-group">
   <% @categories.each do |category| %>
     <li class="list-group-item">
-      <%= link_to nested_category(category.id), category_path(category),'data-ga-event' => "All Categories,#{category.name}" %>
+      <%= link_to nested_category(category.id), election_path(category.elections.first),'data-ga-event' => "All Categories,#{category.name}" %>
     </li>
   <% end %>
 </div>

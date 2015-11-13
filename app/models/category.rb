@@ -11,6 +11,8 @@ class Category < ActiveRecord::Base
   has_many :elections
   has_many :vote_summary
 
+  scope :with_elections, ->{ joins(:elections) }
+
   def has_parent?
     @has_parent ||= !self.parent.nil?
   end

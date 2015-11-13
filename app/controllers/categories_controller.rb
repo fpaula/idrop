@@ -3,6 +3,6 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    @categories = Category.order(:name)
+    @categories = Category.with_elections.order(:name)
   end
 end
