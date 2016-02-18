@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
-ruby "2.1.5"
+ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.2'
+gem 'rails', '4.2.5.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -34,8 +34,8 @@ gem 'friendly_id', '~> 5.1.0'
 gem 'redis-rails'
 
 # Image upload
-gem "refile", require: "refile/rails"
-gem "refile-mini_magick"
+gem 'refile', require: 'refile/rails'
+gem 'refile-mini_magick'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -49,20 +49,19 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-  gem 'mysql2'
+  #gem 'mysql2'
+  # Use postgresql as the database for Active Record
+  gem 'pg'
 
   gem 'capistrano', '~> 3.4.0'
   gem 'capistrano-rvm'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'puma'
 end
 
 group :production do
   # Heroku gem
   gem 'rails_12factor'
-
-  # Use postgresql as the database for Active Record
-  gem 'pg'
-
   gem 'newrelic_rpm'
 end
