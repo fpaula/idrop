@@ -37,6 +37,8 @@ gem 'redis-rails'
 gem 'refile', require: 'refile/rails'
 gem 'refile-mini_magick'
 
+gem 'bcrypt'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :development, :test do
