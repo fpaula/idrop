@@ -51,9 +51,13 @@ group :development, :test do
   gem 'pg'
 
   gem 'capistrano', '~> 3.4.0'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
   gem 'capistrano-rvm'
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'figaro'
   gem 'puma'
 end
 

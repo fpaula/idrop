@@ -3,9 +3,11 @@
 # Defines a single server with a list of roles and multiple properties.
 # You can define all roles on a single server, or split them:
 
-server 'epicvotes.com', user: 'cacatua', roles: %w{app db web}
+# server 'epicvotes.com', user: 'cacatua', roles: %w{app db web}
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
+
+server '54.191.140.189', user: 'deploy', roles: %w{web app db}
 
 
 
@@ -59,8 +61,8 @@ server 'epicvotes.com', user: 'cacatua', roles: %w{app db web}
 #     auth_methods: %w(publickey password)
 #     # password: 'please use keys'
 #   }
-set :ssh_options, {
-    forward_agent: false,
-    auth_methods: %w(password),
-    user: 'cacatua',
-}
+# set :ssh_options, {
+#     forward_agent: false,
+#     auth_methods: %w(password),
+#     user: 'deploy',
+# }
