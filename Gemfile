@@ -37,21 +37,17 @@ gem 'redis-rails'
 gem 'refile', require: 'refile/rails'
 gem 'refile-mini_magick'
 
-gem 'bcrypt'
+# Use postgresql as the database for Active Record
+gem 'pg'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-
   #gem 'mysql2'
-  # Use postgresql as the database for Active Record
-  gem 'pg'
-
   gem 'capistrano', '~> 3.4.0'
   gem 'capistrano3-puma'
   gem 'capistrano-rails', require: false
