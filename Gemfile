@@ -39,6 +39,7 @@ gem 'refile-mini_magick'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem 'puma'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -56,7 +57,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
   gem 'figaro'
-  gem 'puma'
 end
 
 group :development do
