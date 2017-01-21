@@ -1,8 +1,10 @@
 language: ruby
 rvm:
-  - 2.1.2
+  - 2.3.3
+services:
+  - redis-server
 script:
   - bundle exec rake spec
 before_install:
   - cp config/database.yml.sample config/database.yml
-  - mysql -e 'create database idrop_test;'
+  - psql -c 'create database idrop_test;' -U postgres
